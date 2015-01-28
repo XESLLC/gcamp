@@ -13,15 +13,16 @@
         <a class="navbar-brand" href="#">gCamp</a>
     </div>
   </div>
-  
+
 <%= yield %>
 
 <div class="container">
   <div class="page-header">
   </div>
-  <a href="/terms"><u>Terms</u></a>
-  <a href="/about"><u>About</u></a>
+  <div>
+    <%= link_to "Terms","/terms" %>
+    <%= link_to "About","/terms" %>
+  </div>
 </div>
-
 </body>
 </html>
