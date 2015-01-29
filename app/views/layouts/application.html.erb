@@ -22,12 +22,21 @@
   <div>
     <%= link_to "Terms","/terms" %>
     <%= link_to "About","/about" %>
-  </div>
-  <div class = "navbar", "navbar-right">
-    <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif; color:#0783B6;"><img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View David Abramowitz's LinkedIn profile" style="vertical-align:top;" border="0"></span></a>
+    <p class ="navbar-right">
+    <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
+      <%= image_tag("linked_in.jpg", :alt => "linked_in feed", :class => 'image_footer_link_size') %>
+    </a>
+    <a href="https://github.com/XESLLC";>
+      <%= image_tag("GitHub.png", :alt => "GitHub feed", :class => 'image_footer_link_size') %>
+    </a>
+    <a href="https://twitter.com/XESLLC";>
+      <%= image_tag("Twitter.png", :alt => "Twitter feed", :class => 'image_footer_link_size') %>
+    </a>
+    <a href="https://students.gschool.it/students/278";>
+      <%= image_tag("galvanize-g.png", :alt => "galvanize-g feed", :class => 'image_footer_link_size') %>
+    </a>
+    </p>
 
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="XESLLC" data-count="none">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   </div>
 </div>
