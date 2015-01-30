@@ -67,8 +67,13 @@
       </div>
     </div>
   </div>
-
-
-
 </div>
+
+  <% @quotes_hash.each do |key, value| %>
+  <div class = "quotes">
+  <p class = "quote">"<%= value %>"</p>
+  <em class = "text-muted">- <%= key %></em>
+  </div>
+  <% end %>
+
 </div>
