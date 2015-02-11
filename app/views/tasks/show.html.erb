@@ -2,24 +2,25 @@
 
 
   <div class="page-header">
-    <h1>Listing Tasks</h1>
+
   </div>
   <div class="row">
     <div class = "col-md-4">
-
-      <% @tasks.each do |task| %>
+      <% task = @task %>
         <p>
         </p>
-        <h4>Description</h4>
-        <%= task.description %>
+        <%= @task.description %>
         <u><%= link_to "Show", task_path(task[:id]) %></u>
         <u><%= link_to "Edit", edit_task_path(task[:id]) %></u>
         <u><%= link_to "Destroy", task_path(task[:id]) %></u>
-
-      <% end %>
-      <p>
-      </p>
-      <u><%= link_to "New Task", new_task_path %></u>
+        <p>
+        </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-md-4">
+      <u><%= link_to "Edit", edit_task_path(task[:id]) %></u>
+      <u><%= link_to "Back", tasks_path %></u>
     </div>
   </div>
 </div>

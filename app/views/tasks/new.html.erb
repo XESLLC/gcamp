@@ -1,0 +1,25 @@
+<div class="container">
+
+
+  <div class="page-header">
+    <h1>New Task</h1>
+  </div>
+  <div class="row">
+    <div class = "col-md-4">
+
+      <%= form_for @task do |t| %>
+        <%= t.label :description %>
+        <p>
+        </p>
+        <%= t.text_field :description %>
+        <p>
+        </p>
+        <%= t.submit %>
+
+      <% end %>
+      <p>
+      </p>
+      <u><%= link_to "Back", tasks_path %></u>
+    </div>
+  </div>
+</div>
