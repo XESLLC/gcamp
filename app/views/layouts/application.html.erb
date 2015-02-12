@@ -15,8 +15,10 @@
   </div>
 
   </div>
-  <div class="container", style = "color: #40FF00">
-  <%= flash[:notice] %>
+  <div class="container">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+  <% end %>
   </div>
 <%= yield %>
 
