@@ -1,25 +1,20 @@
 <div class="container">
 
+  <div style = "color: green; font-weight: bold">
+    <%= flash[:notice] %>
+  </div>
 
   <div class="page-header">
     <h1>Listing Tasks</h1>
   </div>
+  <% @tasks.each do |task| %>
   <div class="row">
-    <div class = "col-md-4">
-
-      <% @tasks.each do |task| %>
-        <p>
-        </p>
-        <h4>Description</h4>
-        <%= task.description %>
-        <u><%= link_to "Show", task_path(task[:id]) %></u>
-        <u><%= link_to "Edit", edit_task_path(task[:id]) %></u>
-        <u><%= link_to "Destroy", task_path(task[:id]) %></u>
-
-      <% end %>
-      <p>
-      </p>
-      <u><%= link_to "New Task", new_task_path %></u>
-    </div>
+    <h4><div class = "col-md-4">Description: <%= task.description %></div>
+  </h4>
+  <u><%= link_to "Destroy", task_path(task), method: :delete %></u>
+  </div>
+  <% end %>
+  <div>
+    <u><%= link_to "New Task", new_task_path %></u>
   </div>
 </div>
