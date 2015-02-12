@@ -14,14 +14,14 @@
         <%= t.text_field :description %>
         <p>
         </p>
-        <%= t.submit %>
+        <%= t.submit "Update Task" %>
 
       <% end %>
       <p>
       </p>
       <div class="row">
         <div class = "col-md-4">
-        <u><%= link_to "Show", task_path(t[:id]) %>|<%= link_to "Back", tasks_path %></u>
+        <u><%= link_to "Show", task_path(@task) %>|<%= link_to "Back", tasks_path %></u>
         </div>
       </div>
     </div>
