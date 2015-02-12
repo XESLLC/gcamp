@@ -12,7 +12,7 @@
         <%= @task.description %>
         <u><%= link_to "Show", task_path(task[:id]) %></u>
         <u><%= link_to "Edit", edit_task_path(task[:id]) %></u>
-        <u><%= link_to "Destroy", task_path(task[:id]) %></u>
+        <u><%= link_to 'Delete', task_path(task[:id]), method: :delete %></u>
         <p>
         </p>
     </div>

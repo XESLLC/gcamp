@@ -5,16 +5,31 @@
   </div>
 
   <div class="page-header">
-    <h1>Listing Tasks</h1>
+    <div class="pull-right">
+      <%= link_to "New Task", new_task_path, :class=> "btn btn-info" %>
+    </div>
+    <h1>Tasks</h1>
   </div>
-  <% @tasks.each do |task| %>
-  <div class="row">
-    <h4><div class = "col-md-4">Description: <%= task.description %></div>
-  </h4>
-  <u><%= link_to "Destroy", task_path(task), method: :delete %></u>
-  </div>
-  <% end %>
-  <div>
-    <u><%= link_to "New Task", new_task_path %></u>
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><h4>Description</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td>
+            <%= link_to task.description, task_path(task[:id]) %>
+          </td>
+          <td>
+            <div class="text-right">
+              <%= link_to "Edit", edit_task_path(task[:id]), :class=> "btn btn-info" %>
+              <%= link_to "Delete", task_path(task[:id]), method: :delete, :class=> "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

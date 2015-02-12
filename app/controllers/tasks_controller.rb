@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to tasks_path, notice: 'Contact was successfully created   '
+      redirect_to tasks_path, notice: 'Contact was successfully created.'
     else
     end
   end
@@ -39,8 +39,8 @@ class TasksController < ApplicationController
     else
       render :edit
     end
-  end
 
+  end
 
   private
      def task_params
