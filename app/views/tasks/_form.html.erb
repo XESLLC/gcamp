@@ -2,21 +2,37 @@
   <li><%= link_to "Tasks", tasks_path %></li>
   <% if name_of_view == "new" %>
     <li>New Task</li>
-  <% else %>
-    <li><%= link_to "Finish Homework", task_path %> </li>
+  <% elsif name_of_view == "edit" %>
+    <li><%= link_to @task.description, task_path %> </li>
     <li>Edit</li>
+  <% else %>
+    <li><%= @task.description %></li>
   <% end %>
 </ol>
-<%= form_for @task, :html => {:class => "form-horizontal"} do |t| %>
+
+  <%= form_for @task, :html => {:class => "form-horizontal"} do |t| %>
+
+  <% if name_of_view == "show" %>
+  <% else %>
+
+
   <div class = "form-group">
       <%= t.label :description, :class => "col-md-1 control-label" %>
       <div class="col-md-10">
         <%= t.text_field :description, size: 80, :class => "form-control" %>
       </div>
   </div>
+  <div class = "form-group">
+    <div class="col-md-offset-1 col-md-10">
+
+      <%= check_box_tag(:checkbox) %>
+      <%= label_tag(:checkbox, "Complete") %>
+    </div>
+  </div>
 <div class = "form-group">
   <div class="col-md-offset-1 col-md-10">
     <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
   </div>
 </div>
+<% end %>
 <% end %>
