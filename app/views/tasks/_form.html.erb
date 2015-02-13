@@ -3,8 +3,8 @@
   <% if name_of_view == "new" %>
     <li>New Task</li>
   <% else %>
-    <li><%= link_to "Task", task_path %> </li>
-    <li>Edit Task</li>
+    <li><%= link_to "Finish Homework", task_path %> </li>
+    <li>Edit</li>
   <% end %>
 </ol>
 <%= form_for @task, :html => {:class => "form-horizontal"} do |t| %>
