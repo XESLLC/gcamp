@@ -22,6 +22,8 @@
         <%= t.text_field :description, size: 80, :class => "form-control" %>
       </div>
   </div>
+  <% if name_of_view == "new" %>
+  <% else %>
   <div class = "form-group">
     <div class="col-md-offset-1 col-md-10">
 
@@ -29,6 +31,7 @@
       <%= t.label(:checkbox, "Complete") %>
     </div>
   </div>
+  <% end %>
 <div class = "form-group">
   <div class="col-md-offset-1 col-md-10">
     <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
