@@ -4,27 +4,7 @@
   <div class="page-header">
     <h1>Editing Task</h1>
   </div>
-  <div class="row">
-    <div class = "col-md-4">
 
-      <%= form_for @task do |t| %>
-      <%= t.label :description %>
-        <p>
-        </p>
-        <%= t.text_field :description %>
-        <p>
-        </p>
-        <%= t.submit "Update Task" %>
-
-      <% end %>
-      <p>
-      </p>
-      <div class="row">
-        <div class = "col-md-4">
-        <u><%= link_to "Show", task_path(@task) %>|<%= link_to "Back", tasks_path %></u>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <%= render partial: "form", locals: {name_of_view: "edit"} %>
+  
 </div>

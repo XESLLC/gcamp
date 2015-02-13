@@ -1,0 +1,22 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Tasks", tasks_path %></li>
+  <% if name_of_view == "new" %>
+    <li>New Task</li>
+  <% else %>
+    <li><%= link_to "Task", task_path %> </li>
+    <li>Edit Task</li>
+  <% end %>
+</ol>
+<%= form_for @task, :html => {:class => "form-horizontal"} do |t| %>
+  <div class = "form-group">
+      <%= t.label :description, :class => "col-md-1 control-label" %>
+      <div class="col-md-10">
+        <%= t.text_field :description, size: 80, :class => "form-control" %>
+      </div>
+  </div>
+<div class = "form-group">
+  <div class="col-md-offset-1 col-md-10">
+    <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
+  </div>
+</div>
+<% end %>
