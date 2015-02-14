@@ -17,7 +17,12 @@
   <div class = "form-group">
     <%= t.label :due_date, :class => "col-md-1 control-label" %>
     <div class="col-md-2">
-      <div class="form-control-static"> <%= @task.due_date %> </div>
+      <div class="form-control-static">
+        <% if @task.due_date.class != NilClass %>
+          <%= @task.due_date.strftime("%m/%d/%Y") %>
+        <% else %>
+        <% end %>
+      </div>
     </div>
   </div>
 
