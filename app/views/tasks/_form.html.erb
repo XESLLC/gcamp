@@ -13,6 +13,14 @@
   <%= form_for @task, :html => {:class => "form-horizontal"} do |t| %>
 
   <% if name_of_view == "show" %>
+
+  <div class = "form-group">
+    <%= t.label :due_date, :class => "col-md-1 control-label" %>
+    <div class="col-md-2">
+      <div class="form-control-static"> <%= @task.due_date %> </div>
+    </div>
+  </div>
+
   <% else %>
 
 
@@ -22,17 +30,25 @@
         <%= t.text_field :description, size: 80, :class => "form-control" %>
       </div>
   </div>
+
+  <div class = "form-group">
+    <%= t.label :due_date, :class => "col-md-1 control-label" %>
+    <div class="col-md-2">
+      <%= t.date_field :due_date, :class => "form-control"  %>
+    </div>
+  </div>
+
   <% if name_of_view == "new" %>
   <% else %>
   <div class = "form-group">
     <div class="col-md-offset-1 col-md-10">
-
       <%= t.check_box(:checkbox) %>
       <%= t.label(:checkbox, "Complete") %>
     </div>
   </div>
   <% end %>
-<div class = "form-group">
+
+  <div class = "form-group">
   <div class="col-md-offset-1 col-md-10">
     <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
   </div>
