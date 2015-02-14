@@ -24,7 +24,10 @@
             </td>
           <% end %>
           <td >
+            <% if task.due_date.class != NilClass %>
             <%= task.due_date.strftime("%m/%d/%Y") %>
+            <% else %>
+            <% end %>
           </td>
           <td>
             <div class="text-right">
