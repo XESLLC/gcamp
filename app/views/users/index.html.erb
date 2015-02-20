@@ -9,22 +9,22 @@
   <table class="table">
     <thead>
       <tr>
-        <th><h4>Name</h4></th><th><h4>Email</h4></th>
+        <th><h4>Name</h4></th><th><h4>Email</h4></th><th></th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
           <td>
-              <%= user.first_name %> <%= " " %> <%= user.last_name %>
+              <%= link_to user.first_name + " " + user.last_name, user_path(user[:id]) %>
             </td>
             <td >
               <%= mail_to user.email, user.email %>
             </td>
           <td>
             <div class="text-right">
-              <%= link_to "Edit", edit_user_path(user[:id]), :class=> "btn btn-info" %>
-              <%= link_to "Delete", user_path(user[:id]), method: :delete, :class=> "btn btn-danger" %>
+              <%= link_to "Edit", edit_user_path(user[:id]) %>
+              
             </div>
           </td>
         </tr>
