@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     @user.save
-      redirect_to user_path(@user[:id]), notice: 'User was successfully created.'
+      redirect_to users_path, notice: 'User was successfully created.'
 
   end
 
@@ -30,8 +30,8 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_path notice: 'User was successfully updated.'
-    
+    redirect_to users_path, notice: 'User was successfully updated.'
+
   end
 
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path
+    redirect_to users_path, notice: 'User was successfully deleted.'
 
   end
 

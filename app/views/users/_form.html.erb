@@ -4,14 +4,14 @@
       New User
     </h1>
   <% elsif name_of_view == "edit" %>
-  <h1 class="page-header">
+  <h1 class = "page-header">
     Edit User
   </h1>
   <% elsif name_of_view == "show" %>
-  <h1>
-    User
+  <h1 class= "page-header">
+    <%= @user.first_name %> <%= " " %> <%= @user.last_name %>
     <div class="pull-right">
-      <%= link_to "Edit", new_user_path, :class=> "btn btn-info" %>
+      <%= link_to "Edit", edit_user_path(params[:id]), :class=> "btn btn-info" %>
     </div>
   </h1>
   <% else %>
