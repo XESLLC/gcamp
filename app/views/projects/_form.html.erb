@@ -1,0 +1,44 @@
+<div class="container">
+  <% if name_of_view == "new" %>
+    <h1 class="page-header">
+      New Project
+    </h1>
+  <% elsif name_of_view == "edit" %>
+  <h1 class = "page-header">
+    Edit Project
+  </h1>
+  <% elsif name_of_view == "show" %>
+  <h1 class= "page-header">
+    <%= @project.name %>
+    <div class="pull-right">
+      <%= link_to "Edit", edit_project_path(params[:id]), :class=> "btn btn-info" %>
+      <%= link_to "Delete", project_path(params[:id]), method: :delete, :class=> "btn btn-danger"  %>
+    </div>
+  </h1>
+  <% else %>
+  <% end %>
+
+
+  <%= form_for @project do |t| %>
+
+    <% if name_of_view == "show" %>
+
+
+    <% else %>
+    <div class = "form-horizontal">
+      <div class = "form-group">
+          <%= t.label :name, :class => "col-md-2 control-label" %>
+          <div class = "col-md-6">
+            <%= t.text_field :name, :class => "form-control" %>
+          </div>
+      </div>
+
+      <div class = "form-group">
+        <div class = "col-md-offset-2 col-md-6">
+          <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  projects_path, :class=> "btn btn-default" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+<% end %>
+</div>

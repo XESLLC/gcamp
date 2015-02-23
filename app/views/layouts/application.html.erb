@@ -21,33 +21,37 @@
   <% end %>
   </div>
 <%= yield %>
+  <footer class="container">
+    <div class="page-header, footer_margin">
+    </div>
+    <div>
+      <%= link_to "Terms","/terms" %>
+      <%= "|" %>
+      <%= link_to "About","/about" %>
+      <%= "|" %>
+      <%= link_to "FAQ","/faq" %>
+      <%= "|" %>
+      <%= link_to "Tasks","/tasks" %>
+      <%= "|" %>
+      <%= link_to "Users","/users" %>
+      <%= "|" %>
+      <%=link_to "Projects","/projects" %>
 
-<footer class="container">
-  <div class="page-header, footer_margin">
-  </div>
-  <div>
-    <%= link_to "Terms","/terms" %>
-    <%= link_to "About","/about" %>
-    <%= link_to "FAQ","/faq" %>
-    <%= link_to "Tasks","/tasks" %>
-    <%= link_to "Users","/users" %>
-    <p class ="navbar-right">
-    <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
-      <%= image_tag("linked_in.jpg", :alt => "linked_in feed", :class => 'image_footer_link_size') %>
-    </a>
-    <a href="https://github.com/XESLLC";>
-      <%= image_tag("GitHub.png", :alt => "GitHub feed", :class => 'image_footer_link_size') %>
-    </a>
-    <a href="https://twitter.com/XESLLC";>
-      <%= image_tag("Twitter.png", :alt => "Twitter feed", :class => 'image_footer_link_size') %>
-    </a>
-    <a href="https://students.gschool.it/students/278";>
-      <%= image_tag("galvanize-g.png", :alt => "galvanize-g feed", :class => 'image_footer_link_size') %>
-    </a>
-    </p>
-
-
-  </div>
-</footer>
+      <p class ="navbar-right">
+        <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
+          <%= image_tag("linked_in.jpg", :alt => "linked_in feed", :class => 'image_footer_link_size') %>
+        </a>
+        <a href="https://github.com/XESLLC";>
+          <%= image_tag("GitHub.png", :alt => "GitHub feed", :class => 'image_footer_link_size') %>
+        </a>
+        <a href="https://twitter.com/XESLLC";>
+          <%= image_tag("Twitter.png", :alt => "Twitter feed", :class => 'image_footer_link_size') %>
+        </a>
+        <a href="https://students.gschool.it/students/278";>
+          <%= image_tag("galvanize-g.png", :alt => "galvanize-g feed", :class => 'image_footer_link_size') %>
+        </a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
