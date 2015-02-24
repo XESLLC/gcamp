@@ -10,10 +10,12 @@
   <% end %>
 </ol>
 
-  <%= form_for @task, :html => {:class => "form-horizontal"} do |t| %>
 
+  <%= render partial: "shared/errors", locals: {function: @task} %>
+
+<%= form_for @task do |t| %>
+  <div class = "form-horizontal">
   <% if name_of_view == "show" %>
-
   <div class = "form-group">
     <%= t.label :due_date, :class => "col-md-1 control-label" %>
     <div class="col-md-2">
@@ -30,10 +32,10 @@
 
 
   <div class = "form-group">
-      <%= t.label :description, :class => "col-md-1 control-label" %>
-      <div class="col-md-10">
-        <%= t.text_field :description, size: 80, :class => "form-control" %>
-      </div>
+    <%= t.label :description, :class => "col-md-1 control-label" %>
+    <div class="col-md-10">
+      <%= t.text_field :description, size: 80, :class => "form-control" %>
+    </div>
   </div>
 
   <div class = "form-group">
@@ -54,9 +56,10 @@
   <% end %>
 
   <div class = "form-group">
-  <div class="col-md-offset-1 col-md-10">
-    <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
+    <div class="col-md-offset-1 col-md-10">
+      <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
+    </div>
   </div>
-</div>
-<% end %>
+  <% end %>
+  </div>
 <% end %>

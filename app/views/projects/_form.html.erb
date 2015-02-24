@@ -12,7 +12,7 @@
     <%= @project.name %>
     <div class="pull-right">
       <%= link_to "Edit", edit_project_path(params[:id]), :class=> "btn btn-info" %>
-      <%= link_to "Delete", project_path(params[:id]), method: :delete, :class=> "btn btn-danger"  %>
+      <%= link_to "Delete", project_path(params[:id]), method: :delete, :class=> "btn btn-danger"%>
     </div>
   </h1>
   <% else %>
@@ -20,10 +20,7 @@
 
 
   <%= form_for @project do |t| %>
-
     <% if name_of_view == "show" %>
-
-
     <% else %>
     <div class = "form-horizontal">
       <div class = "form-group">

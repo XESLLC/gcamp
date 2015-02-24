@@ -14,6 +14,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to task_path(@task[:id]), notice: 'Task was successfully created.'
     else
+      render :new
     end
   end
 
@@ -29,6 +30,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update(task_params)
     redirect_to task_path, notice: 'Task was successfully updated.'
+    else
+     render :edit
     end
   end
 
