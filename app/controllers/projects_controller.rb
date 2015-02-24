@@ -18,9 +18,9 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project[:id]), notice: "Project was successfully created."
     else
-      render new
+      render :new
     end
-    
+
   end
 
   def edit
@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to project_path(@project[:id]), notice: "Project was successfully updated."
     else
-      render edit
+      render :edit
     end
 
   end
