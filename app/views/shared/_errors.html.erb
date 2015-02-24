@@ -1,15 +1,15 @@
 
   <div class = "form-group">
     <% if function.errors.any? %>
-    <div class="alert alert-danger col-md-offset-1">
+    <div class="alert alert-danger col-md-offset-2">
     <h2> <%= pluralize(function.errors.count, "error") %> prohibited this article from being saved:</h2>
     <% function.errors.full_messages.each do |msg| %>
     <div>
       <ul>
         <li> <%= msg %></li>
       </ul>
-    <% end %>
     </div>
+    <% end %>
     </div>
     <% end %>
   </div>

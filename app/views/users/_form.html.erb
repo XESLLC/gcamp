@@ -17,6 +17,7 @@
   <% else %>
   <% end %>
 
+  <%= render partial: "shared/errors", locals: {function: @user} %>
 
   <%= form_for @user do |t| %>
 
@@ -39,45 +40,60 @@
 
     <% else %>
 
-  <div class = "row">
-      <%= t.label :first_name, :class => "col-md-2 control-label" %>
+
+
+
+
+
+
+  <div class = "form-horizontal">
+    <div class = "form-group">
+      <%= t.label :first_name, :class => " col-md-2 control-label" %>
       <div class="col-md-6">
         <%= t.text_field :first_name, :class => "form-control" %>
       </div>
+    </div>
   </div>
 
 <p>
 </p>
 
-  <div class = "row">
+  <div class = "form-horizontal">
+    <div class = "form-group">
     <%= t.label :last_name, :class => "col-md-2 control-label" %>
     <div class="col-md-6">
       <%= t.text_field :last_name, size: 80, :class => "form-control" %>
+    </div>
     </div>
   </div>
 <p>
 </p>
 
-  <div class = "row">
+  <div class = "form-horizontal">
+    <div class = "form-group">
     <%= t.label :email, :class => "col-md-2 control-label" %>
     <div class="col-md-6">
       <%= t.email_field :email, size: 80, :class => "form-control" %>
     </div>
   </div>
-<p>
-</p>
-
-  <div class = "row">
-  <div class="col-md-offset-2 col-md-6">
-    <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  users_path, :class=> "btn btn-default" %>
   </div>
-</div>
+<p>
+</p>
+
+  <div class = "form-horizontal">
+    <div class = "form-group">
+      <div class="col-md-offset-2 col-md-6">
+        <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  users_path, :class=> "btn btn-default" %>
+      </div>
+    </div>
+  </div>
 
 <p>
 </p>
 
-  <div class = "row">
-    <div class="col-md-offset-2 col-md-6">
+  <div class = "form-horizontal">
+    <div class = "form-group">
+    <div class="form-group col-md-offset-2 col-md-6">
       <% if name_of_view == "edit" %>
         <div class="well">
           <div class="col-md-offset-5">
@@ -85,6 +101,7 @@
           </div>
       <% end %>
       </div>
+    </div>
     </div>
   </div>
   <% end %>

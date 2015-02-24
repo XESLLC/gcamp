@@ -32,14 +32,14 @@
 
 
   <div class = "form-group">
-    <%= t.label :description, :class => "col-md-1 control-label" %>
+    <%= t.label :description, :class => "col-md-2 control-label" %>
     <div class="col-md-10">
       <%= t.text_field :description, size: 80, :class => "form-control" %>
     </div>
   </div>
 
   <div class = "form-group">
-    <%= t.label :due_date, :class => "col-md-1 control-label" %>
+    <%= t.label :due_date, :class => "col-md-2 control-label" %>
     <div class="col-md-2">
       <%= t.date_field :due_date, :class => "form-control"  %>
     </div>
@@ -48,7 +48,7 @@
   <% if name_of_view == "new" %>
   <% else %>
   <div class = "form-group">
-    <div class="col-md-offset-1 col-md-10">
+    <div class="col-md-offset-2 col-md-10">
       <%= t.check_box(:checkbox) %>
       <%= t.label(:checkbox, "Complete") %>
     </div>
@@ -56,7 +56,7 @@
   <% end %>
 
   <div class = "form-group">
-    <div class="col-md-offset-1 col-md-10">
+    <div class="col-md-offset-2 col-md-10">
       <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
     </div>
   </div>
