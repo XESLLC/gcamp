@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Gcamp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="navbar navbar-fixed-top navbar-inverse">
-
-    <div class="container">
+  <head>
+    <title>Gcamp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
         <a class="navbar-brand" href="#">gCamp</a>
+      </div>
     </div>
-  </div>
+    
+    <div class="container">
+      <% if notice %>
+        <p class="alert alert-success", style = "text-align: center; font-weight: bold"><%= notice %></p>
+    <% end %>
+    </div>
+  <%= yield %>
+    <footer class="container">
+      <div class="page-header, footer_margin">
+      </div>
+      <div>
+        <%= link_to "Terms","/terms" %>
+        <%= "|" %>
+        <%= link_to "About","/about" %>
+        <%= "|" %>
+        <%= link_to "FAQ","/faq" %>
+        <%= "|" %>
+        <%= link_to "Tasks","/tasks" %>
+        <%= "|" %>
+        <%= link_to "Users","/users" %>
+        <%= "|" %>
+        <%=link_to "Projects","/projects" %>
 
-  </div>
-  <div class="container">
-    <% if notice %>
-      <p class="alert alert-success", style = "text-align: center; font-weight: bold"><%= notice %></p>
-  <% end %>
-  </div>
-<%= yield %>
-  <footer class="container">
-    <div class="page-header, footer_margin">
-    </div>
-    <div>
-      <%= link_to "Terms","/terms" %>
-      <%= "|" %>
-      <%= link_to "About","/about" %>
-      <%= "|" %>
-      <%= link_to "FAQ","/faq" %>
-      <%= "|" %>
-      <%= link_to "Tasks","/tasks" %>
-      <%= "|" %>
-      <%= link_to "Users","/users" %>
-      <%= "|" %>
-      <%=link_to "Projects","/projects" %>
-
-      <p class ="navbar-right">
-        <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
-          <%= image_tag("linked_in.jpg", :alt => "linked_in feed", :class => 'image_footer_link_size') %>
-        </a>
-        <a href="https://github.com/XESLLC";>
-          <%= image_tag("GitHub.png", :alt => "GitHub feed", :class => 'image_footer_link_size') %>
-        </a>
-        <a href="https://twitter.com/XESLLC";>
-          <%= image_tag("Twitter.png", :alt => "Twitter feed", :class => 'image_footer_link_size') %>
-        </a>
-        <a href="https://students.gschool.it/students/278";>
-          <%= image_tag("galvanize-g.png", :alt => "galvanize-g feed", :class => 'image_footer_link_size') %>
-        </a>
-      </p>
-    </div>
-  </footer>
-</body>
+        <p class ="navbar-right">
+          <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
+            <%= image_tag("linked_in.jpg", :alt => "linked_in feed", :class => 'image_footer_link_size') %>
+          </a>
+          <a href="https://github.com/XESLLC";>
+            <%= image_tag("GitHub.png", :alt => "GitHub feed", :class => 'image_footer_link_size') %>
+          </a>
+          <a href="https://twitter.com/XESLLC";>
+            <%= image_tag("Twitter.png", :alt => "Twitter feed", :class => 'image_footer_link_size') %>
+          </a>
+          <a href="https://students.gschool.it/students/278";>
+            <%= image_tag("galvanize-g.png", :alt => "galvanize-g feed", :class => 'image_footer_link_size') %>
+          </a>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

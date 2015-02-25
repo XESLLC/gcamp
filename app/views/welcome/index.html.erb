@@ -1,18 +1,11 @@
 
 
 <div class="container">
-
-
-
   <div class="jumbotron">
     <h1>gCamp</h1>
-    <p>
-
-    </p>
+    <p></p>
     <p>Your life, organized.</p>
-
   </div>
-
   <div class="row">
     <div class="col-md-4">
       <p class="lead">
@@ -30,50 +23,43 @@
       </p>
     </div>
   </div>
-
-
   <div class="row">
     <div class="col-md-4">
       <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Tasks</h3>
-      </div>
-      <div class="panel-body">Grouped by projects and lists. Just the way you like'em.
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-4">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Permmissions</h3>
-      </div>
-      <div class="panel-body">Fine-grained permissions.
+        <div class="panel-heading">
+          <h3 class="panel-title">Tasks</h3>
+        </div>
+        <div class="panel-body">Grouped by projects and lists. Just the way you like'em.
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Comments</h3>
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Permmissions</h3>
+        </div>
+        <div class="panel-body">Fine-grained permissions.
+        </div>
       </div>
-      <div class="panel-body">
-        <ul>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Comments</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
             <li>Comment on task and document.</li>
             <li>Get e-mail notificaitons.</li>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
   <% @quotes_hash.each do |key, value| %>
-  <div class = "quotes">
-  <p class = "quote">"<%= value %>"</p>
-  <em class = "text-muted">- <%= key %></em>
-  </div>
+    <div class = "quotes">
+      <p class = "quote">"<%= value %>"</p>
+      <em class = "text-muted">- <%= key %></em>
+    </div>
   <% end %>
-
 </div>

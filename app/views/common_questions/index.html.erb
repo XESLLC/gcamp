@@ -1,26 +1,20 @@
 
 <div class="container">
-
   <% @faqs.each do |t| %>
-
     <ul style="color:blue">
       <li><u><%= link_to t.get_question, "##{t.get_question}" %> </u></li>
     </ul>
-
   <% end %>
-
-
   <div class="page-header">
     <h1>Frequently Asked Questions</h1>
   </div>
   <% @faqs.each do |t| %>
     <h3><%= t.get_question %></h3>
-    <%= content_tag :a, "", name: t.get_question %>
-    <p></p>
+      <%= content_tag :a, "", name: t.get_question %>
+      <p></p>
     <div class = "row">
       <div class = "col-md-6"> <%= t.get_answer %>
-        <p>
-        </p>
+        <p></p>
         <A HREF= "#" > <u>top</u> </A>
       </div>
     </div>
