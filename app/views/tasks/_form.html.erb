@@ -11,10 +11,12 @@
 </ol>
 
 
-  <%= render partial: "shared/errors", locals: {function: @task} %>
+  
 
 <%= form_for @task do |t| %>
-  <div class = "form-horizontal">
+<div class = "form-horizontal">
+  <%= render partial: "shared/errors", locals: {function: @task} %>
+
   <% if name_of_view == "show" %>
   <div class = "form-group">
     <%= t.label :due_date, :class => "col-md-1 control-label" %>
@@ -33,7 +35,7 @@
 
   <div class = "form-group">
     <%= t.label :description, :class => "col-md-2 control-label" %>
-    <div class="col-md-10">
+    <div class="col-md-6">
       <%= t.text_field :description, size: 80, :class => "form-control" %>
     </div>
   </div>
@@ -48,7 +50,7 @@
   <% if name_of_view == "new" %>
   <% else %>
   <div class = "form-group">
-    <div class="col-md-offset-2 col-md-10">
+    <div class="col-md-offset-2 col-md-6">
       <%= t.check_box(:checkbox) %>
       <%= t.label(:checkbox, "Complete") %>
     </div>
@@ -56,10 +58,10 @@
   <% end %>
 
   <div class = "form-group">
-    <div class="col-md-offset-2 col-md-10">
+    <div class="col-md-offset-2 col-md-6">
       <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
     </div>
   </div>
   <% end %>
-  </div>
+</div>
 <% end %>

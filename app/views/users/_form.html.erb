@@ -1,23 +1,24 @@
 <div class="container">
+
   <% if name_of_view == "new" %>
     <h1 class="page-header">
       New User
     </h1>
   <% elsif name_of_view == "edit" %>
-  <h1 class = "page-header">
-    Edit User
-  </h1>
+    <h1 class = "page-header">
+      Edit User
+    </h1>
   <% elsif name_of_view == "show" %>
-  <h1 class= "page-header">
-    <%= @user.first_name %> <%= " " %> <%= @user.last_name %>
-    <div class="pull-right">
-      <%= link_to "Edit", edit_user_path(params[:id]), :class=> "btn btn-info" %>
-    </div>
-  </h1>
+    <h1 class= "page-header">
+      <%= @user.first_name %> <%= " " %> <%= @user.last_name %>
+      <div class="pull-right">
+        <%= link_to "Edit", edit_user_path(params[:id]), :class=> "btn btn-info" %>
+      </div>
+    </h1>
   <% else %>
   <% end %>
 
-  <%= render partial: "shared/errors", locals: {function: @user} %>
+
 
   <%= form_for @user do |t| %>
 
@@ -40,70 +41,49 @@
 
     <% else %>
 
+      <div class = "form-horizontal">
+        <%= render partial: "shared/errors", locals: {function: @user} %>
+        <div class = "form-group">
+            <%= t.label :first_name, :class => " col-md-2 control-label" %>
+            <div class="col-md-6">
+              <%= t.text_field :first_name, :class => "form-control" %>
+            </div>
+        </div>
 
-
-
-
-
-
-  <div class = "form-horizontal">
-    <div class = "form-group">
-      <%= t.label :first_name, :class => " col-md-2 control-label" %>
-      <div class="col-md-6">
-        <%= t.text_field :first_name, :class => "form-control" %>
-      </div>
-    </div>
-  </div>
-
-<p>
-</p>
-
-  <div class = "form-horizontal">
-    <div class = "form-group">
-    <%= t.label :last_name, :class => "col-md-2 control-label" %>
-    <div class="col-md-6">
-      <%= t.text_field :last_name, size: 80, :class => "form-control" %>
-    </div>
-    </div>
-  </div>
-<p>
-</p>
-
-  <div class = "form-horizontal">
-    <div class = "form-group">
-    <%= t.label :email, :class => "col-md-2 control-label" %>
-    <div class="col-md-6">
-      <%= t.email_field :email, size: 80, :class => "form-control" %>
-    </div>
-  </div>
-  </div>
-<p>
-</p>
-
-  <div class = "form-horizontal">
-    <div class = "form-group">
-      <div class="col-md-offset-2 col-md-6">
-        <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  users_path, :class=> "btn btn-default" %>
-      </div>
-    </div>
-  </div>
-
-<p>
-</p>
-
-  <div class = "form-horizontal">
-    <div class = "form-group">
-    <div class="col-md-offset-2 col-md-6">
-      <% if name_of_view == "edit" %>
-        <div class="well">
-          <div class="col-md-offset-5">
-            <%= link_to "Delete User",  user_path, :class=> "btn btn-danger", method: :delete %>
+        <div class = "form-group">
+          <%= t.label :last_name, :class => "col-md-2 control-label" %>
+          <div class="col-md-6">
+            <%= t.text_field :last_name, size: 80, :class => "form-control" %>
           </div>
-      <% end %>
+        </div>
+
+        <div class = "form-group">
+          <%= t.label :email, :class => "col-md-2 control-label" %>
+          <div class="col-md-6">
+            <%= t.email_field :email, size: 80, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class = "form-group">
+          <div class="col-md-offset-2 col-md-6">
+            <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  users_path, :class=> "btn btn-default" %>
+          </div>
+        </div>
+
+        <div class = "form-horizontal">
+          <div class = "form-group">
+            <div class="col-md-offset-2 col-md-6">
+            <% if name_of_view == "edit" %>
+              <div class="well">
+                <div class="col-md-offset-5">
+                  <%= link_to "Delete User",  user_path, :class=> "btn btn-danger", method: :delete %>
+                </div>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-  </div>
-  <% end %>
+    <% end %>
   <% end %>
 </div>
