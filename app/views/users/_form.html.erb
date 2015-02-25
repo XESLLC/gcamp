@@ -18,8 +18,6 @@
   <% else %>
   <% end %>
 
-
-
   <%= form_for @user do |t| %>
 
     <% if name_of_view == "show" %>
@@ -69,7 +67,7 @@
             <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  users_path, :class=> "btn btn-default" %>
           </div>
         </div>
-
+        
         <div class = "form-horizontal">
           <div class = "form-group">
             <div class="col-md-offset-2 col-md-6">
