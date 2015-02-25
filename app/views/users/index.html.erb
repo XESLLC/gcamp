@@ -16,15 +16,14 @@
       <% @users.each do |user| %>
         <tr>
           <td>
-              <%= link_to user.first_name + " " + user.last_name, user_path(user[:id]) %>
-            </td>
-            <td >
-              <%= mail_to user.email, user.email %>
-            </td>
+            <%= link_to user.first_name + " " + user.last_name, user_path(user[:id]) %>
+          </td>
+          <td >
+            <%= mail_to user.email, user.email %>
+          </td>
           <td>
             <div class="text-right">
               <%= link_to "Edit", edit_user_path(user[:id]) %>
-              
             </div>
           </td>
         </tr>

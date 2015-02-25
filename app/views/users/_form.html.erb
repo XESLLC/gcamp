@@ -1,13 +1,9 @@
 <div class="container">
 
   <% if name_of_view == "new" %>
-    <h1 class="page-header">
-      New User
-    </h1>
+    <h1 class="page-header">New User</h1>
   <% elsif name_of_view == "edit" %>
-    <h1 class = "page-header">
-      Edit User
-    </h1>
+    <h1 class = "page-header">Edit User</h1>
   <% elsif name_of_view == "show" %>
     <h1 class= "page-header">
       <%= @user.first_name %> <%= " " %> <%= @user.last_name %>
@@ -15,23 +11,19 @@
         <%= link_to "Edit", edit_user_path(params[:id]), :class=> "btn btn-info" %>
       </div>
     </h1>
-  <% else %>
   <% end %>
 
   <%= form_for @user do |t| %>
 
     <% if name_of_view == "show" %>
-
       <dl class="dl-horizontal">
         <dt><%= t.label :first_name %></dt>
         <dd><%= @user.first_name %></dd>
       </dl>
-
       <dl class="dl-horizontal">
         <dt><%= t.label :last_name %></dt>
         <dd><%= @user.last_name %></dd>
       </dl>
-
       <dl class="dl-horizontal">
         <dt><%= t.label :email %></dt>
         <dd><%= @user.email %></dd>
@@ -47,38 +39,32 @@
               <%= t.text_field :first_name, :class => "form-control" %>
             </div>
         </div>
-
         <div class = "form-group">
           <%= t.label :last_name, :class => "col-md-2 control-label" %>
           <div class="col-md-6">
             <%= t.text_field :last_name, size: 80, :class => "form-control" %>
           </div>
         </div>
-
         <div class = "form-group">
           <%= t.label :email, :class => "col-md-2 control-label" %>
           <div class="col-md-6">
             <%= t.email_field :email, size: 80, :class => "form-control" %>
           </div>
         </div>
-
         <div class = "form-group">
           <div class="col-md-offset-2 col-md-6">
             <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  users_path, :class=> "btn btn-default" %>
           </div>
         </div>
-        
-        <div class = "form-horizontal">
-          <div class = "form-group">
-            <div class="col-md-offset-2 col-md-6">
-            <% if name_of_view == "edit" %>
-              <div class="well">
-                <div class="col-md-offset-5">
-                  <%= link_to "Delete User",  user_path, :class=> "btn btn-danger", method: :delete %>
-                </div>
+        <div class = "form-group">
+          <div class="col-md-offset-2 col-md-6">
+          <% if name_of_view == "edit" %>
+            <div class="well">
+              <div class="col-md-offset-5">
+                <%= link_to "Delete User",  user_path, :class=> "btn btn-danger", method: :delete %>
               </div>
-            <% end %>
             </div>
+          <% end %>
           </div>
         </div>
       </div>

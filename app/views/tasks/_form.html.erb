@@ -1,67 +1,76 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Tasks", tasks_path %></li>
+<div class="container">
+
   <% if name_of_view == "new" %>
-    <li>New Task</li>
+    <h1 class="page-header">New Task</h1>
   <% elsif name_of_view == "edit" %>
-    <li><%= link_to @task.description, task_path %> </li>
-    <li>Edit</li>
-  <% else %>
-    <li><%= @task.description %></li>
-  <% end %>
-</ol>
-
-
-  
-
-<%= form_for @task do |t| %>
-<div class = "form-horizontal">
-  <%= render partial: "shared/errors", locals: {function: @task} %>
-
-  <% if name_of_view == "show" %>
-  <div class = "form-group">
-    <%= t.label :due_date, :class => "col-md-1 control-label" %>
-    <div class="col-md-2">
-      <div class="form-control-static">
-        <% if @task.due_date.class != NilClass %>
-          <%= @task.due_date.strftime("%m/%d/%Y") %>
-        <% else %>
-        <% end %>
+    <h1 class = "page-header">Edit Task</h1>
+  <% elsif name_of_view == "show" %>
+    <div class= "page-header">
+      <div class="pull-right">
+        <%= link_to "Edit", edit_task_path(params[:id]), :class=> "btn btn-info" %>
       </div>
+      <% if @task.checkbox %>
+        <h1 style = "text-decoration: line-through"> <%= @task.description %> </h1>
+      <% else %>
+        <h1> <%= @task.description  %> </h1>
+      <% end %>
     </div>
-  </div>
-
   <% else %>
-
-
-  <div class = "form-group">
-    <%= t.label :description, :class => "col-md-2 control-label" %>
-    <div class="col-md-6">
-      <%= t.text_field :description, size: 80, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class = "form-group">
-    <%= t.label :due_date, :class => "col-md-2 control-label" %>
-    <div class="col-md-2">
-      <%= t.date_field :due_date, :class => "form-control"  %>
-    </div>
-  </div>
-
-  <% if name_of_view == "new" %>
-  <% else %>
-  <div class = "form-group">
-    <div class="col-md-offset-2 col-md-6">
-      <%= t.check_box(:checkbox) %>
-      <%= t.label(:checkbox, "Complete") %>
-    </div>
-  </div>
   <% end %>
 
-  <div class = "form-group">
-    <div class="col-md-offset-2 col-md-6">
-      <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
+  <ol class="breadcrumb">
+    <li> <%= link_to "Tasks", tasks_path %> </li>
+    <% if name_of_view == "new" %>
+      <li>New Task</li>
+    <% elsif name_of_view == "edit" %>
+      <li> <%= link_to @task.description, task_path %> </li>
+      <li>Edit</li>
+    <% else %>
+      <li> <%= @task.description %> </li>
+    <% end %>
+  </ol>
+
+  <%= form_for @task do |t| %>
+    <div class = "form-horizontal">
+      <%= render partial: "shared/errors", locals: {function: @task} %>
+      <% if name_of_view == "show" %>
+        <div class = "form-group">
+          <%= t.label :due_date, :class => "col-md-1 control-label" %>
+          <div class="col-md-2">
+            <div class="form-control-static">
+              <% if @task.due_date.class != NilClass %>
+                <%= @task.due_date.strftime("%m/%d/%Y") %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class = "form-group">
+          <%= t.label :description, :class => "col-md-2 control-label" %>
+          <div class="col-md-6">
+            <%= t.text_field :description, size: 80, :class => "form-control" %>
+          </div>
+        </div>
+        <div class = "form-group">
+          <%= t.label :due_date, :class => "col-md-2 control-label" %>
+          <div class="col-md-2">
+            <%= t.date_field :due_date, :class => "form-control"  %>
+          </div>
+        </div>
+        <% if name_of_view != "new" %>
+          <div class = "form-group">
+            <div class="col-md-offset-2 col-md-6">
+              <%= t.check_box(:checkbox) %>
+              <%= t.label(:checkbox, "Complete") %>
+            </div>
+          </div>
+        <% end %>
+        <div class = "form-group">
+          <div class="col-md-offset-2 col-md-6">
+            <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
   <% end %>
 </div>
-<% end %>

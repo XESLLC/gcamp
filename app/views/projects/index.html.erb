@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="page-header">
     <div class="pull-right">
@@ -15,15 +14,9 @@
     <tbody>
       <% @projects.each do |project| %>
         <tr>
-          <td>
-            <%= link_to project.name, project_path(project[:id]) %>
-          </td>
-          <td>
-
-          </td>
-          <td>
-            
-          </td>
+          <td> <%= link_to project.name, project_path(project[:id]) %> </td>
+          <td></td>
+          <td></td>
         </tr>
       <% end %>
     </tbody>

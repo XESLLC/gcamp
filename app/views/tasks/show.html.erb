@@ -1,19 +1,4 @@
-<div class="container">
 
 
-  <div class="page-header">
-    <div class="pull-right">
-      <%= link_to "Edit", edit_task_path(params[:id]), :class=> "btn btn-info" %>
-    </div>
-    <% if @task.checkbox %>
-      <h1 style =  "text-decoration: line-through"> <%= @task.description %>
-      </h1>
 
-    <% else %>
-    <h1> <%= @task.description  %>
-    </h1>
-    <% end %>
-  </div>
-
-    <%= render partial: "form", locals: {name_of_view: "show"} %>
-</div>
+<%= render partial: "form", locals: {name_of_view: "show"} %>
