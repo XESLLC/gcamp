@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   get 'faq' => 'common_questions#index'
   get 'users' => 'users#index'
 
+  get '/signup' => 'registrations#new', as: :signup
+  post '/signup' => 'registrations#create'
+  get '/signin' =>  'authentication#new', as: :signin
+  post '/signin' => 'authentication#create'
+  get '/signout' => 'authentication#destroy', as: :signout
+
   resources :users
 
   resources :tasks

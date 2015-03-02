@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  #before_action
+  #if current_user
+  #else
+  #redirect_to signin_path
+  #end
 
   def index
 
@@ -38,7 +43,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
 
     @user = User.find(params[:id])
@@ -53,15 +57,10 @@ class UsersController < ApplicationController
 
   end
 
-
-
-
   private
 
   def user_params
-  params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
-
-
 
 end
