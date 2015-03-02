@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-
-
 describe "User Model" do
     it "must have a first_name, last_name, and email" do
       new_user = User.new({first_name: nil, last_name: nil, email: nil})
