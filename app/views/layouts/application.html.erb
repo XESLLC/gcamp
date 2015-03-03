@@ -10,13 +10,13 @@
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <a class="navbar-brand" href="#">gCamp</a>
-        <div class = "navbar-brand navbar-right">
+        <div class = "nav navbar-right">
           <% if current_user %>
-            <%= link_to "#{current_user.first_name + ' ' + current_user.last_name}", user_path(current_user[:id]) %>
-            <%= link_to "Sign Out", signout_path %>
+            <%= link_to "#{current_user.first_name + ' ' + current_user.last_name}", user_path(current_user[:id]), class: "navbar-brand" %>
+            <%= link_to "Sign Out", signout_path, class: "navbar-brand" %>
           <% else %>
-            <%= link_to "Sign Up", signup_path %>
-            <%= link_to "Sign In", signin_path %>
+            <%= link_to "Sign Up", signup_path, class: "navbar-brand" %>
+            <%= link_to "Sign In", signin_path, class: "navbar-brand" %>
           <% end %>
         </div>
       </div>
