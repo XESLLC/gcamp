@@ -51,12 +51,20 @@
             <%= t.email_field :email, size: 80, :class => "form-control" %>
           </div>
         </div>
+        <% if name_of_view != "edit" %>
         <div class = "form-group">
           <%= t.label :password, :class => "col-md-2 control-label" %>
           <div class="col-md-6">
             <%= t.text_field :password, size: 80, :class => "form-control" %>
           </div>
         </div>
+        <div class = "form-group">
+          <%= t.label :password_confirmation, "Password Confirmation", :class => "col-md-2 control-label" %>
+          <div class="col-md-6">
+            <%= t.text_field :password_confirmation, size: 80, :class => "form-control" %>
+          </div>
+        </div>
+        <% end %>
         <div class = "form-group">
           <div class="col-md-offset-2 col-md-6">
             <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  users_path, :class=> "btn btn-default" %>

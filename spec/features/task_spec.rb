@@ -1,6 +1,9 @@
 require 'rails_helper'
 
-feature "Check tasks pages w fash and validations" do
+feature "Check tasks pages w flash and validations" do
+  before do
+    sign_up
+  end
     scenario "User can see index page" do
       visit tasks_path
       expect(page).to have_content ("Tasks")

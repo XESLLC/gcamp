@@ -1,5 +1,13 @@
 class ProjectsController < ApplicationController
 
+  def user_logged_in
+    if current_user
+    else
+      redirect_to signin_path, alert: "You must sign in"
+    end
+  end
+before_action :user_logged_in
+
   def index
 
     @projects = Project.all

@@ -10,19 +10,15 @@ class AuthenticationController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to root_path, notice: "You have successfully signed in"
     else
-      @sign_in_error = "Username / password combination is invalid"
-      render :new
+      redirect_to signin_path, alert: "Email / Password combination is invalid ", notice: "dummy"
     end
   end
 
   def destroy
     session.clear
-    redirect_to root_path
+    redirect_to root_path, notice: "You have successfully signed out"
   end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
-  end
 end
