@@ -10,13 +10,13 @@
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <a class="navbar-brand" href="#">gCamp</a>
-        <div class = "nav navbar-right">
+        <div class = "nav navbar-right navbar-text">
           <% if current_user %>
-            <%= link_to "#{current_user.first_name + ' ' + current_user.last_name}", user_path(current_user[:id]), class: "navbar-brand" %>
-            <%= link_to "Sign Out", signout_path, class: "navbar-brand" %>
+            <%= link_to "#{current_user.first_name + ' ' + current_user.last_name}", user_path(current_user[:id]), class: "navbar-link" %>
+            <%= link_to "Sign Out", signout_path, class: "navbar-link" %>
           <% else %>
-            <%= link_to "Sign Up", signup_path, class: "navbar-brand" %>
-            <%= link_to "Sign In", signin_path, class: "navbar-brand" %>
+            <%= link_to "Sign Up", signup_path, class: "navbar-link" %>
+            <%= link_to "Sign In", signin_path, class: "navbar-link" %>
           <% end %>
         </div>
       </div>
@@ -25,9 +25,9 @@
     <div class="container">
     <% if alert && notice %>
     <% elsif notice %>
-      <p class="alert alert-success", style = "text-align: center; font-weight: bold"><%= notice %></p>
+      <p class="alert alert-success", style = "font-weight: bold"><%= notice %></p>
     <% elsif alert %>
-      <p class="alert alert-danger", style = "text-align: center; font-weight: bold"><%= alert %></p>
+      <p class="alert alert-danger", style = "font-weight: bold"><%= alert %></p>
     <% end %>
     </div>
   <%= yield %>
