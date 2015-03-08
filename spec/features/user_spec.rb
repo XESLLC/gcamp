@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature "Check users pages w flash and validations" do
   before do
     sign_up

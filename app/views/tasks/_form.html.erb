@@ -7,7 +7,7 @@
   <% elsif name_of_view == "show" %>
     <div class= "page-header">
       <div class="pull-right">
-        <%= link_to "Edit", edit_task_path(params[:id]), :class=> "btn btn-info" %>
+        <%= link_to "Edit", edit_project_task_path, :class=> "btn btn-info" %>
       </div>
       <% if @task.checkbox %>
         <h1 style = "text-decoration: line-through"> <%= @task.description %> </h1>
@@ -19,18 +19,19 @@
   <% end %>
 
   <ol class="breadcrumb">
-    <li> <%= link_to "Tasks", tasks_path %> </li>
+    <li> <%= link_to "Projects", project_tasks_path(params[:project_id]) %> </li>
+    <li> <%= link_to @project.name, project_path(params[:project_id]) %> </li>
     <% if name_of_view == "new" %>
       <li>New Task</li>
     <% elsif name_of_view == "edit" %>
-      <li> <%= link_to @task.description, task_path %> </li>
+      <li> <%= link_to @task.description, project_task_path(@project, @task) %> </li>
       <li>Edit</li>
     <% else %>
       <li> <%= @task.description %> </li>
     <% end %>
   </ol>
 
-  <%= form_for @task do |t| %>
+  <%= form_for [@project, @task] do |t| %>
     <div class = "form-horizontal">
       <%= render partial: "shared/errors", locals: {function: @task} %>
       <% if name_of_view == "show" %>
@@ -67,7 +68,7 @@
         <% end %>
         <div class = "form-group">
           <div class="col-md-offset-2 col-md-6">
-            <%= t.submit :class=> "btn btn-info" %> <%= "   " %><%= link_to "Cancel", tasks_path, :class=> "btn btn-default" %>
+            <%= t.submit :class=> "btn btn-info" %> <%= "   " %> <%= link_to "Cancel", project_tasks_path(@project, @task), :class=> "btn btn-default" %>
           </div>
         </div>
       <% end %>

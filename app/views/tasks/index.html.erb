@@ -1,10 +1,17 @@
 <div class="container">
   <div class="page-header">
     <div class="pull-right">
-      <%= link_to "New Task", new_task_path, :class=> "btn btn-info" %>
+      <%= link_to "New Task", new_project_task_path, :class=> "btn btn-info" %>
     </div>
-    <h1>Tasks</h1>
+    <h1>Tasks for<%= " " + @project.name %></h1>
   </div>
+
+  <ol class="breadcrumb">
+    <li> <%= link_to "Projects", projects_path %> </li>
+    <li> <%= link_to @project.name, project_path(params[:project_id]) %> </li>
+    <li>Tasks</li>
+  </ol>
+
   <table class="table">
     <thead>
       <tr>
@@ -12,15 +19,15 @@
       </tr>
     </thead>
     <tbody>
-      <% @tasks.each do |task| %>
+      <% @project.tasks.each do |task| %>
         <tr>
           <% if task.checkbox %>
             <td style =  "text-decoration: line-through">
-              <%= link_to task.description, task_path(task[:id]) %>
+              <%= link_to task.description, project_task_path(@project, task[:id]) %>
             </td>
           <% else %>
             <td >
-              <%= link_to task.description, task_path(task[:id]) %>
+              <%= link_to task.description, project_task_path(@project, task[:id]) %>
             </td>
           <% end %>
           <td >
@@ -31,8 +38,8 @@
           </td>
           <td>
             <div class="text-right">
-              <%= link_to "Edit", edit_task_path(task[:id]), :class=> "btn btn-info" %>
-              <%= link_to "Delete", task_path(task[:id]), method: :delete, :class=> "btn btn-danger" %>
+              <%= link_to "Edit", edit_project_task_path(@project,task[:id]), :class=> "btn btn-info" %>
+              <%= link_to "Delete", project_task_path(@project, task[:id]), method: :delete, :class=> "btn btn-danger" %>
             </div>
           </td>
         </tr>

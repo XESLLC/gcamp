@@ -12,6 +12,7 @@ before_action :user_logged_in
 
     @projects = Project.all
 
+
   end
 
   def new
@@ -51,6 +52,7 @@ before_action :user_logged_in
   def show
 
     @project = Project.find(params[:id])
+    @task_count = @project.tasks.all.count
 
   end
 
@@ -60,7 +62,7 @@ before_action :user_logged_in
     if @project.destroy
       redirect_to projects_path, notice: "Project was successfully deleted."
     else
-      render show
+      render :show
     end
 
   end

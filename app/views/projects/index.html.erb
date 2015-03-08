@@ -8,14 +8,14 @@
   <table class="table">
     <thead>
       <tr>
-        <th><h4>Name</h4></th><th><h4></h4></th><th></th>
+        <th><h4>Name</h4></th><th><h4>Tasks</h4></th><th></th>
       </tr>
     </thead>
     <tbody>
       <% @projects.each do |project| %>
         <tr>
           <td> <%= link_to project.name, project_path(project[:id]) %> </td>
-          <td></td>
+          <td> <%= link_to project.tasks.all.count, project_tasks_path(project) %></td>
           <td></td>
         </tr>
       <% end %>

@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 feature "Check signup page w flash and validations" do
     scenario "Users can see signup page" do

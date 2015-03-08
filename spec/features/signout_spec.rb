@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 feature "Check signout w flash and validations" do
   scenario "Users signout and see root" do

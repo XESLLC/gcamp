@@ -14,6 +14,18 @@
     </h1>
   <% end %>
 
+  <ol class="breadcrumb">
+    <li> <%= link_to "Projects", projects_path %> </li>
+    <% if name_of_view == "new" %>
+      <li>New Project</li>
+    <% elsif name_of_view == "edit" %>
+      <li> <%= link_to @project.name, project_path %> </li>
+      <li>Edit</li>
+    <% else %>
+      <li> <%= @project.name %> </li>
+    <% end %>
+  </ol>
+
   <%= form_for @project do |t| %>
 
     <% if name_of_view != "show" %>
@@ -21,14 +33,20 @@
         <%= render partial: "shared/errors", locals: {function: @project} %>
         <div class = "form-group">
           <%= t.label :name, :class => "col-md-2 control-label" %>
-          <div class = "col-md-6">
-            <%= t.text_field :name, :class => "form-control" %>
+          <div class="col-md-8">
+          <%= t.text_field :name, class: "form-control" %>
           </div>
         </div>
         <div class = "form-group">
           <div class = "col-md-offset-2 col-md-6">
             <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel",  projects_path, :class=> "btn btn-default" %>
           </div>
+        </div>
+      </div>
+    <% else %>
+      <div class = "form-horizontal">
+        <div class = "form-group col-md-8">
+          <%= link_to "#{pluralize(@project.tasks.all.count, 'Task')}", project_tasks_path(@project) %>
         </div>
       </div>
     <% end %>

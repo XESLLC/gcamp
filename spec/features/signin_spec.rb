@@ -1,4 +1,4 @@
-require 'rails_helper'
+
 
 feature "Check signin w flash and validations" do
   scenario "Users signin and see root" do

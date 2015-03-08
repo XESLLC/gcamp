@@ -21,9 +21,11 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :tasks
+  resources :projects do
+    resources :tasks
+  end
+  
 
-  resources :projects
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

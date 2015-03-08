@@ -10,43 +10,50 @@ before_action :user_logged_in
 
 
   def index
-    @tasks = Task.all
+    @project = Project.find(params[:project_id])
+    @tasks = @project.tasks
   end
 
   def new
     @task = Task.new
+    @project = Project.find(params[:project_id])
   end
 
   def create
-    @task = Task.new(task_params)
+      @task = Task.new(task_params.merge(:project_id=> params[:project_id]))
     if @task.save
-      redirect_to task_path(@task[:id]), notice: 'Task was successfully created.'
+      redirect_to project_task_path(params[:project_id], @task[:id]), notice: 'Task was successfully created.'
     else
+      @project = Project.find(params[:project_id])
       render :new
     end
   end
 
   def show
-    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   def edit
-     @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-    redirect_to task_path, notice: 'Task was successfully updated.'
+    redirect_to project_task_path(params[:project_id], @task[:id]), notice: 'Task was successfully updated.'
     else
+      @project = Project.find(params[:project_id])
      render :edit
     end
   end
 
   def destroy
-    task = Task.find(params[:id])
-    if task.destroy
-      redirect_to tasks_path, notice: 'Task was successfully deleted.'
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
+    if @task.destroy
+      redirect_to project_tasks_path(@project), notice: 'Task was successfully deleted.'
     else
       render :edit
     end
@@ -55,7 +62,7 @@ before_action :user_logged_in
 
   private
      def task_params
-       params.require(:task).permit(:description, :checkbox, :due_date)
+       params.require(:task).permit(:description, :checkbox, :due_date, :project_id)
      end
 
 
