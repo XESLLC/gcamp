@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="page-header">
+    <h1> <%= @project.name + ":" %> Manage Members</h1>
+  </div>
+  <ol class="breadcrumb">
+    <li> <%= link_to "Projects", projects_path %> </li>
+    <li> <%= link_to @project.name, project_path(params[:project_id]) %> </li>
+    <li>Memberships</li>
+  </ol>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th><h4>Name</h4></th><th><h4>Tasks</h4></th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
