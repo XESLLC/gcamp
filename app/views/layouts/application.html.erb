@@ -10,15 +10,15 @@
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <a class="navbar-brand" href="#">gCamp</a>
-        <div class = "nav navbar-right navbar-text">
-          <% if current_user %>
-            <%= link_to "#{current_user.first_name + ' ' + current_user.last_name}", user_path(current_user[:id]), class: "navbar-link" %>
-            <%= link_to "Sign Out", signout_path, class: "navbar-link" %>
-          <% else %>
-            <%= link_to "Sign Up", signup_path, class: "navbar-link" %>
-            <%= link_to "Sign In", signin_path, class: "navbar-link" %>
-          <% end %>
-        </div>
+        <ul class = "nav navbar-nav navbar-right ">
+            <% if current_user %>
+            <li><%= link_to "#{current_user.first_name + ' ' + current_user.last_name}", user_path(current_user[:id]), class: "navbar-link" %></li>
+              <li><%= link_to "Sign Out", signout_path, class: "navbar-link" %></li>
+            <% else %>
+            <li><%= link_to "Sign Up", signup_path, class: "navbar-link" %></li>
+              <li><%= link_to "Sign In", signin_path, class: "navbar-link" %></li>
+            <% end %>
+        </ul>
       </div>
     </div>
 
@@ -41,9 +41,11 @@
         <%= "|" %>
         <%= link_to "FAQ","/faq" %>
         <%= "|" %>
+        <% if current_user %>
         <%= link_to "Users","/users" %>
         <%= "|" %>
         <%=link_to "Projects","/projects" %>
+        <% end %>
 
         <p class ="navbar-right">
           <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
