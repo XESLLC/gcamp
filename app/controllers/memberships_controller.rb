@@ -2,25 +2,20 @@ class MembershipsController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @memberships = @project.memberships
-    @membership = Membership.new
+    @membership = @project.memberships.new
+    @memberships = @project.memberships.all
     @users = User.all
   end
 
-  def new
-
-    @project = Project.find(params[:project_id])
-    @membership = Membership.new
-
-  end
 
   def create
-    @membership = Membership.new(membership_params.merge(:project_id=> params[:project_id]))
+    @project = Project.find(params[:project_id])
+    @memberships = @project.memberships.all
+    @membership = @project.memberships.new(membership_params)
     if @membership.save
-      redirect_to project_task_path(params[:project_id], @membership[:id]), notice: 'Membership was successfully created.'
+      redirect_to project_memberships_path, notice: "#{@membership.user.full_name} was successfully added."
     else
-      @project = Project.find(params[:project_id])
-      render :new
+      render :index
     end
 
   end
@@ -28,7 +23,7 @@ class MembershipsController < ApplicationController
   private
 
   def membership_params
-    params.require(:membership).permit(:role)
+    params.require(:membership).permit(:role, :user_id)
   end
 
 end

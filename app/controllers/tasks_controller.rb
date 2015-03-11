@@ -20,11 +20,11 @@ before_action :user_logged_in
   end
 
   def create
-      @task = Task.new(task_params.merge(:project_id=> params[:project_id]))
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.new(task_params)
     if @task.save
       redirect_to project_task_path(params[:project_id], @task[:id]), notice: 'Task was successfully created.'
     else
-      @project = Project.find(params[:project_id])
       render :new
     end
   end

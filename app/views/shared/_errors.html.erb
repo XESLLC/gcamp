@@ -1,14 +1,16 @@
-  <div class = "row">
-    <div class= "col-md-offset-2 col-md-8">
-      <% if function.errors.any? %>
-        <div class = "alert alert-danger">
-          <h2 class> <%= pluralize(function.errors.count, "error") %> prohibited this article from being saved:</h2>
-          <% function.errors.full_messages.each do |msg| %>
-            <ul>
-              <li> <%= msg %></li>
-            </ul>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+
+
+<div class = "row">
+  <div class= "col-md-offset-2 col-md-8">
+    <% if function.errors.any? %>
+      <div class = "alert alert-danger">
+        <h2 class> <%= pluralize(function.errors.count, "error") %> prohibited this article from being saved:</h2>
+        <% function.errors.full_messages.each do |msg| %>
+          <ul>
+            <li> <%= msg %></li>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+</div>
