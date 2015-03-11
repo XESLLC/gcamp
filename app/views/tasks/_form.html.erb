@@ -7,7 +7,7 @@
   <% elsif name_of_view == "show" %>
     <div class= "page-header">
       <div class="pull-right">
-        <%= link_to "Edit", edit_project_task_path, :class=> "btn btn-info" %>
+        <%= link_to "Edit", edit_project_task_path, :class=> "btn btn-primary" %>
       </div>
       <% if @task.checkbox %>
         <h1 style = "text-decoration: line-through"> <%= @task.description %> </h1>
@@ -68,7 +68,7 @@
         <% end %>
         <div class = "form-group">
           <div class="col-md-offset-2 col-md-6">
-            <%= t.submit :class=> "btn btn-info" %> <%= "   " %> <%= link_to "Cancel", project_tasks_path(@project, @task), :class=> "btn btn-default" %>
+            <%= t.submit :class=> "btn btn-primary" %> <%= "   " %> <%= link_to "Cancel", project_tasks_path(@project, @task), :class=> "btn btn-default" %>
           </div>
         </div>
       <% end %>

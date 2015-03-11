@@ -25,26 +25,33 @@
     </div>
   </div>
 
-  <div class="form-inline">
-    <div class="form-group">
-      <div class="well">
-        <%= form_for [@project, @membership] do |t| %>
-          <%= t.collection_select(:user_id, User.all, :id, :full_name, {:prompt=> "Please select a user..."}, {class: "form-control"}) %>
-          <%= t.select(:role, [["member", 1], ["owner", 2]], {}, class: "form-control") %>
-          <%= t.submit "Create Membership", class: 'form-control' %>
-        <% end %>
+
+  <div class = 'form-inline'>
+    <div class = 'form-group'>
+      <div class = 'page-header'>
+        <div class = 'well'>
+          <%= form_for [@project, @membership] do |t| %>
+            <%= t.collection_select(:user_id, User.all, :id, :full_name, {:prompt=> "Please select a user..."}, {class: 'form-control'}) %>
+            <%= t.select(:role, [["member", 1], ["owner", 2]], {}, class: 'form-control') %>
+            <%= t.submit 'Add New Member', class: 'btn btn-primary form-control' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="form-horizontal">
-    <div class="form-group">
-      <% @memberships.each do |membership| %>
-        <div class="col-md-12">
-          <%= link_to membership.user.full_name, user_path(membership.user.id)%>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
+  <% @memberships.each do |membership| %>
+    <table class = 'form-group'>
+    <%= form_for [@project, membership], html: {class: 'form-inline'} do |f| %>
+      <div class = 'form-group'>
+        <tr>
+        <td class = 'col-md-3'><%= link_to membership.user.full_name, user_path(membership.user.id), class: 'title' %></td>
+        <td class = 'col-md-3'><%= f.select(:role, [["member", 1], ["owner", 2]], {}, class: 'form-control') %></td>
+        <td class = 'col-md-2'><%= f.submit 'Update', class: 'btn btn-primary' %></td>
+        <td class = 'col-md-1'><%= link_to "", project_membership_path(@project, membership), method: :delete, class: "glyphicon glyphicon-remove" %></td>
+        </tr>
+      </div>
+    <% end %>
+  </table>
+  <% end %>
 </div>

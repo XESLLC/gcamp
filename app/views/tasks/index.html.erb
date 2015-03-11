@@ -1,7 +1,7 @@
 <div class="container">
   <div class="page-header">
     <div class="pull-right">
-      <%= link_to "New Task", new_project_task_path, :class=> "btn btn-info" %>
+      <%= link_to "New Task", new_project_task_path, :class=> "btn btn-primary" %>
     </div>
     <h1>Tasks for<%= " " + @project.name %></h1>
   </div>
@@ -38,7 +38,7 @@
           </td>
           <td>
             <div class="text-right">
-              <%= link_to "Edit", edit_project_task_path(@project,task[:id]), :class=> "btn btn-info" %>
+              <%= link_to "Edit", edit_project_task_path(@project,task[:id]), :class=> "btn btn-primary" %>
               <%= link_to "Delete", project_task_path(@project, task[:id]), method: :delete, :class=> "btn btn-danger" %>
             </div>
           </td>
