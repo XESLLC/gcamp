@@ -32,7 +32,7 @@ feature "Check tasks pages w flash and validations" do
   scenario "User can see specific task details" do
     click_on ("Kill Slovodan Melosovic")
     expect(page).to have_content ("Kill Slovodan Melosovic")
-    expect(page).to have_content ("Due date")
+    expect(page).to have_content ("Due on")
     expect(current_path).to eq("/projects/#{@project_test.id}/tasks/#{@task_test.id}")
   end
 
@@ -55,7 +55,8 @@ feature "Check tasks pages w flash and validations" do
   scenario "User can delete task" do
 
     visit ("/projects/#{@project_test.id}/tasks")
-    find(:xpath, "//tr[contains(.,'Kill Slovodan Melosovic')]/td/div/a", :text => 'Delete').click
+    find('.glyphicon-remove').click
+
     expect(page).to have_content ("Task was successfully deleted.")
     expect(page).to have_no_content ("Kill Slovodan Melosovic")
     expect(current_path).to eq("/projects/#{@project_test.id}/tasks")

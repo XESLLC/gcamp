@@ -32,6 +32,8 @@ before_action :user_logged_in
   def show
     @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
+    @comments = @task.comments.all
+    @comment = @task.comments.new
   end
 
   def edit

@@ -30,11 +30,14 @@ Rails.application.routes.draw do
   # /projects/1/CRUD_STUFF_HERE
 
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      end
     resources :memberships
   end
 
-
+  resources :tasks, only: [] do
+    resources :comments
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
