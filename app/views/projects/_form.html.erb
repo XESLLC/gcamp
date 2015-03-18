@@ -9,7 +9,6 @@
       <%= @project.name %>
       <div class="pull-right">
         <%= link_to "Edit", edit_project_path(params[:id]), :class=> "btn btn-primary" %>
-        <%= link_to "Delete", project_path(params[:id]), method: :delete, :class=> "btn btn-danger"%>
       </div>
     </h1>
   <% end %>
@@ -26,9 +25,8 @@
     <% end %>
   </ol>
 
-  <%= form_for @project do |t| %>
-
     <% if name_of_view != "show" %>
+  <%= form_for @project do |t| %>
       <div class = "form-horizontal">
         <%= render partial: "shared/errors", locals: {function: @project} %>
         <div class = "form-group">
@@ -43,15 +41,32 @@
           </div>
         </div>
       </div>
+    <% end %>
     <% else %>
-      <div class = "form-horizontal">
+      <div class = "row">
         <div class = "form-group col-md-8">
-          <%= link_to "#{pluralize(@project.tasks.all.count, 'Task')}", project_tasks_path(@project) %>
+          <%= link_to "#{pluralize(@project.tasks.count, 'Task')}", project_tasks_path(@project) %>
         </div>
         <div class = "form-group col-md-8">
-          <%= link_to "#{pluralize(@project.memberships.all.count, 'Memberships')}", project_memberships_path(@project) %>
+          <%= link_to "#{pluralize(@project.memberships.count, 'Memberships')}", project_memberships_path(@project) %>
         </div>
       </div>
-    <% end %>
+
+      <div class = "well">
+        <div class = "row col-md-12">
+          <h4>Delete</h4>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= "Deleting this project will also delete #{pluralize(@project.memberships.count, 'memberships')}, #{pluralize(@project.tasks.count, 'task')}, and associated comments." %>
+          </div>
+        </div>
+        <p></p>
+        <div class="row">
+          <div class=" col-md-12">
+            <%= link_to "Delete", project_path(params[:id]), method: :delete, :data => {:confirm => 'Are you sure?'}, :class=> "btn btn-danger"%>
+          </div>
+        </div>
+      </div>
   <% end %>
 </div>
