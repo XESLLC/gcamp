@@ -48,7 +48,7 @@
           <%= link_to "#{pluralize(@project.tasks.count, 'Task')}", project_tasks_path(@project) %>
         </div>
         <div class = "form-group col-md-8">
-          <%= link_to "#{pluralize(@project.memberships.count, 'Memberships')}", project_memberships_path(@project) %>
+          <%= link_to "#{pluralize(@project.memberships.count, 'Membership')}", project_memberships_path(@project) %>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= "Deleting this project will also delete #{pluralize(@project.memberships.count, 'memberships')}, #{pluralize(@project.tasks.count, 'task')}, and associated comments." %>
+            <%= "Deleting this project will also delete #{pluralize(@project.memberships.count, 'membership')}, #{pluralize(@project.tasks.count, 'task')}, and associated comments." %>
           </div>
         </div>
         <p></p>
