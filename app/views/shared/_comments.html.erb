@@ -1,6 +1,10 @@
 <% @comments.each do |comment| %>
   <div class="row">
+    <% if comment.user %>
     <%= link_to comment.user.full_name, user_path(comment.user), class: "col-md-3" %>
+    <% else %>
+    <%= link_to "deleted_user", project_task_path(@project, @task), class: "col-md-3" %>
+    <% end %>
     <div class="col-md-9">
       <%= comment.comment %>
     </div>

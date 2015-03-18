@@ -95,9 +95,6 @@ namespace :destroy_orphans do
       end
     end
 
-
-
-
     puts "-"*100
     puts "-"*100
     puts @count1.to_s + " Membership(s) (no ids) destroyed!"
