@@ -1,11 +1,11 @@
-namespace :destroy_orphans do
+namespace :cleanup do
   desc "Destroy Orphane objects in DB"
   task destroy_orphan_memberships_tasks_projects: :environment do
 
     project_ids = Project.all.pluck(:id)
     membership_project_ids = Membership.all.pluck(:project_id)
 
-    @count1 = (0)
+    @count1 = (0) 
 
     membership_project_ids.each do |project_id|
       if !project_ids.include? project_id || !project_id
