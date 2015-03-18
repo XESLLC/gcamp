@@ -12,4 +12,12 @@
       <p>When we're not hard at work, we're hard at play. We're loud in the bar and we're always the ones shuttung the place down. Human creativity and creation is what drives us, and it infuses every featuer of gCamp.</p>
     </div>
   </div>
+  <div class="row col-md-12">
+    <div>
+      <h5>gcamp is extremely active. Check out our killer stats below!</h5>
+    </div>
+    <div>
+      <h5><%= "#{pluralize(@projects.count, 'Project')}, #{pluralize(@tasks.count, 'Task')}, #{pluralize(@memberships.count, 'Project Member')}, #{pluralize(@comments.count, 'Comment')}" %></h5>
+    </div>
+  </div>
 </div>
