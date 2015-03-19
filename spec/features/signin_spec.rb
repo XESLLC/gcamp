@@ -11,6 +11,6 @@ feature "Check signin w flash and validations" do
       click_on("Sign In")
     end
     expect(page).to have_content("You have successfully signed in")
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(projects_path)
   end
 end
