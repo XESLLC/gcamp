@@ -30,6 +30,6 @@ feature "Check signup page w flash and validations" do
         click_on("Sign Up")
       end
       expect(page).to have_content ("You have successfully signed up")
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(new_project_path)
     end
 end
