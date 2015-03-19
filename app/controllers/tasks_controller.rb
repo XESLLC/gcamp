@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class TasksController < PagesController
   def user_logged_in
     if current_user
     else

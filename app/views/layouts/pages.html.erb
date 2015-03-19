@@ -9,8 +9,22 @@
   <body>
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <a class="navbar-brand" href="/">gCamp</a>
-        <ul class = "nav navbar-nav navbar-right ">
+        <ul class= "nav navbar-nav">
+          <a class="navbar-brand" href="/projects">gCamp</a>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <% current_user.projects.each do |project|%>
+                  <li><%= link_to project.name, project_path(project.id) %></li>
+                  <li class="divider"></li>
+                <% end %>
+                  <li><%= link_to "New Project", new_project_path %></li>
+              </ul>
+          </li>
+          <li><%= link_to "Users", users_path, class: "navbar-link" %></a></li>
+        </ul>
+
+           <ul class = "nav navbar-nav navbar-right ">
             <% if current_user %>
             <li><%= link_to "#{current_user.first_name + ' ' + current_user.last_name}", user_path(current_user[:id]), class: "navbar-link" %></li>
               <li><%= link_to "Sign Out", signout_path, class: "navbar-link" %></li>
@@ -34,32 +48,14 @@
     <footer class="container">
       <div class="page-header, footer_margin">
       </div>
-      <div>
+      <span class = "col-md-offset-5">
         <%= link_to "Terms","/terms" %>
         <%= "|" %>
         <%= link_to "About","/about" %>
         <%= "|" %>
         <%= link_to "FAQ","/faq" %>
         <%= "|" %>
-        <%= link_to "Users","/users" %>
-        <%= "|" %>
-        <%=link_to "Projects","/projects" %>
-    
-        <p class ="navbar-right">
-          <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
-            <%= image_tag("linked_in.jpg", :alt => "linked_in feed", :class => 'image_footer_link_size') %>
-          </a>
-          <a href="https://github.com/XESLLC";>
-            <%= image_tag("GitHub.png", :alt => "GitHub feed", :class => 'image_footer_link_size') %>
-          </a>
-          <a href="https://twitter.com/XESLLC";>
-            <%= image_tag("Twitter.png", :alt => "Twitter feed", :class => 'image_footer_link_size') %>
-          </a>
-          <a href="https://students.gschool.it/students/278";>
-            <%= image_tag("galvanize-g.png", :alt => "galvanize-g feed", :class => 'image_footer_link_size') %>
-          </a>
-        </p>
-      </div>
+        </span>
     </footer>
   </body>
 </html>

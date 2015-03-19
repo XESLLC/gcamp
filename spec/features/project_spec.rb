@@ -13,7 +13,7 @@ feature "Check projects pages w flash and validations" do
 
     scenario "Users can create new project" do
       visit projects_path
-      click_on("New Project")
+      find('.btn').click
       expect(page).to have_content ("New Project")
       fill_in "project_name", with: nil
       click_on ("Create Project")

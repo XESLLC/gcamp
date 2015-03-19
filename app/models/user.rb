@@ -3,6 +3,7 @@ require 'bcrypt'
 
   has_many :memberships, dependent: :destroy
   has_many :comments, dependent: :nullify
+  has_many :projects, through: :memberships
 
   validates :first_name, :last_name, :email, presence: true
   validates_uniqueness_of :email

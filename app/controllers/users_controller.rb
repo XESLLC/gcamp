@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < PagesController
   def user_logged_in
     if current_user
     else
