@@ -1,4 +1,5 @@
 class ProjectsController < PagesController
+  before_action :check_member_of_project
 
   def user_logged_in
     if current_user
@@ -21,8 +22,7 @@ class ProjectsController < PagesController
     @project = Project.new(project_params)
     if @project.save
       Membership.create!(role: "owner", project_id: @project.id, user_id: current_user.id )
-      redirect_to project_path(@project[:id]), notice: "Project was successfully created."
-
+      redirect_to project_tasks_path(@project[:id]), notice: "Project was successfully created."
     else
       render :new
     end
