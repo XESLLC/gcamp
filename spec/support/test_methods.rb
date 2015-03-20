@@ -15,7 +15,9 @@ end
 
 
 def create_new_project
-  Project.create!({name: "Find Slovodan's Weapons"})
+  project = Project.create!({name: "Find Slovodan's Weapons"})
+  user_test = User.first
+  Membership.create!(role: "owner", project_id: project.id, user_id: user_test.id)
 end
 
 def create_new_project_task
@@ -23,6 +25,30 @@ def create_new_project_task
     description: "Kill Slovodan Melosovic",
     checkbox: false,
     due_date: Time.zone.tomorrow,
-    project_id: Project.last[:id]
+    project_id: Project.find_by(name: "Find Slovodan's Weapons").id
   })
+end
+
+RSpec.configure do |config|
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
 end

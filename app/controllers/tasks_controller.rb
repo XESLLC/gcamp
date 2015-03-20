@@ -1,4 +1,6 @@
 class TasksController < PagesController
+before_action :check_member_of_task
+
   def user_logged_in
     if current_user
     else

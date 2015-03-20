@@ -22,7 +22,6 @@ feature "Check tasks pages w flash and validations" do
     expect(page).to have_content ("Description can't be blank")
     fill_in "Description", with: "Kill Slovodan Melosovic"
     fill_in "Due date", with: 01012015
-    new_task =
     click_on ("Create Task")
     expect(page).to have_content ("Task was successfully created.")
     expect(page).to have_content ("Kill Slovodan Melosovic")

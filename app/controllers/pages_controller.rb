@@ -25,4 +25,19 @@ class PagesController < ApplicationController
     end
   end
 
+  def check_member_of_task
+    is_task_member = true
+    if params[:project_id]
+      is_task_member = false
+      Project.find(params[:project_id]).users.each do |user|
+        if user.id == current_user.id
+          is_task_member = true
+        end
+      end
+    end
+    if is_task_member == false
+      redirect_to projects_path, notice: "You do not have access to that project"
+    end
+  end
+
 end

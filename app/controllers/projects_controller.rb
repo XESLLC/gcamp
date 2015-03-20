@@ -11,7 +11,7 @@ class ProjectsController < PagesController
   before_action :user_logged_in
 
   def index
-    @projects = Project.all
+    @projects = User.find(current_user.id).projects
   end
 
   def new
