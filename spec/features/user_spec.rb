@@ -76,6 +76,6 @@ feature "Check users pages w flash and validations" do
       click_on ("Delete User")
       expect(page).to have_content ("User was successfully deleted.")
       expect(page).to have_no_content ("Slovadon Melosovic")
-      expect(current_path).to eq("/users")
+      expect(current_path).to eq("/")
     end
 end
