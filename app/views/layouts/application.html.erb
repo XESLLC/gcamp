@@ -35,16 +35,20 @@
       <div class="page-header, footer_margin">
       </div>
       <div>
+        <%= link_to "Home","/" %>
+        <%= "|" %>
         <%= link_to "Terms","/terms" %>
         <%= "|" %>
         <%= link_to "About","/about" %>
         <%= "|" %>
         <%= link_to "FAQ","/faq" %>
-        <%= "|" %>
-        <%= link_to "Users","/users" %>
-        <%= "|" %>
-        <%=link_to "Projects","/projects" %>
-    
+        <% if current_user %>
+          <%= "|" %>
+          <%= link_to "Users","/users" %>
+          <%= "|" %>
+          <%=link_to "Projects","/projects" %>
+        <% end %>
+
         <p class ="navbar-right">
           <a href="http://www.linkedin.com/pub/david-abramowitz/3/703/175";>
             <%= image_tag("linked_in.jpg", :alt => "linked_in feed", :class => 'image_footer_link_size') %>

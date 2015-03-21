@@ -17,7 +17,7 @@
       <h5>gcamp is extremely active. Check out our killer stats below!</h5>
     </div>
     <div>
-      <h5><%= "#{pluralize(@projects.count, 'Project')}, #{pluralize(@tasks.count, 'Task')}, #{pluralize(@memberships.count, 'Project Member')}, #{pluralize(@comments.count, 'Comment')}" %></h5>
+      <h5><%= "#{pluralize(@projects.count, 'Project')}, #{pluralize(@tasks.count, 'Task')}, #{pluralize(@memberships.count, 'Project Member')}, #{pluralize(@user.count, 'User')}, #{pluralize(@comments.count, 'Comment')}" %></h5>
     </div>
   </div>
 </div>

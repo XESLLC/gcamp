@@ -56,7 +56,7 @@ before_action :user_logged_in
 
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path, notice: 'User was successfully deleted.'
+    redirect_to root_path, notice: 'User was successfully deleted.'
 
   end
 
