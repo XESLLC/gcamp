@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
  def check_if_current_user
     if !current_user
-      redirect_to projects_path, notice: "You do not have access to that project"
+      redirect_to root_path, notice: "You must sign in"
     end
   end
 
