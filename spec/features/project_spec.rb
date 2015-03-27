@@ -12,8 +12,6 @@ feature "Check projects pages w flash and validations" do
       end
 
     scenario "Users can create new project" do
-      visit projects_path
-      find('.btn').click
       expect(page).to have_content ("New Project")
       fill_in "project_name", with: nil
       click_on ("Create Project")
@@ -59,4 +57,5 @@ feature "Check projects pages w flash and validations" do
       expect(page).to have_no_content ("Find Slovodan's Weapons")
       expect(current_path).to eq("/projects")
     end
+
 end

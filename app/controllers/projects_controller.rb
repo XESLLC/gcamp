@@ -1,14 +1,13 @@
 class ProjectsController < PagesController
   before_action :check_member_of_project
   before_action :user_logged_in
-  
+  before_action :check_user_role, only: [:update, :destroy]
+
   def user_logged_in
     if !current_user
-      redirect_to signin_path, alert: "You must sign in"
+    redirect_to signin_path, alert: "You must sign in"
     end
   end
-
-  before_action :user_logged_in
 
   def index
     @projects = User.find(current_user.id).projects
@@ -54,7 +53,6 @@ class ProjectsController < PagesController
       render :show
     end
   end
-
 
   private
 

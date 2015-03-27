@@ -1,4 +1,5 @@
 class MembershipsController < PagesController
+before_action :check_member_of_project_id
 
   def index
     @project = Project.find(params[:project_id])
@@ -17,7 +18,6 @@ class MembershipsController < PagesController
     else
       render :index
     end
-
   end
 
   def update

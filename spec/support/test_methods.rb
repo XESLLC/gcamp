@@ -13,11 +13,29 @@ def sign_up
   end
 end
 
+def sign_up2
+  visit signup_path
+  within(".form-horizontal") do
+    click_on("Sign Up")
+  end
+  fill_in "First Name", with: "The"
+  fill_in "Last Name", with: "Best"
+  fill_in "Email", with: "best@stuff.com"
+  fill_in "Password", with: "password"
+  fill_in "Password Confirmation", with: "password"
+  within(".form-horizontal") do
+    click_on("Sign Up")
+  end
+end
 
 def create_new_project
+  unless User.first
+    User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
+  end
   project = Project.create!({name: "Find Slovodan's Weapons"})
   user_test = User.first
   Membership.create!(role: "owner", project_id: project.id, user_id: user_test.id)
+  project
 end
 
 def create_new_project_task
@@ -28,6 +46,11 @@ def create_new_project_task
     project_id: Project.find_by(name: "Find Slovodan's Weapons").id
   })
 end
+
+def create_user
+  User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
+end
+
 
 RSpec.configure do |config|
 

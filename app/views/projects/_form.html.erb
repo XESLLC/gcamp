@@ -7,9 +7,11 @@
   <% elsif name_of_view == "show" %>
     <h1 class= "page-header">
       <%= @project.name %>
-      <div class="pull-right">
-        <%= link_to "Edit", edit_project_path(params[:id]), :class=> "btn btn-primary" %>
-      </div>
+      <% if @project.memberships.find_by(user_id: current_user[:id]).role == "owner" %>
+        <div class="pull-right">
+          <%= link_to "Edit", edit_project_path(params[:id]), :class=> "btn btn-primary" %>
+        </div>
+      <% end %>
     </h1>
   <% end %>
 
@@ -51,7 +53,7 @@
           <%= link_to "#{pluralize(@project.memberships.count, 'Membership')}", project_memberships_path(@project) %>
         </div>
       </div>
-
+      <% if  @project.memberships.find_by(user_id: current_user[:id]).role == "owner"  %>
       <div class = "well">
         <div class = "row col-md-12">
           <h4>Delete</h4>
@@ -68,5 +70,6 @@
           </div>
         </div>
       </div>
+      <% end %>
   <% end %>
 </div>
