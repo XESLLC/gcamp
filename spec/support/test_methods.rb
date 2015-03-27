@@ -34,7 +34,7 @@ def create_new_project
   end
   project = Project.create!({name: "Find Slovodan's Weapons"})
   user_test = User.first
-  Membership.create!(role: "owner", project_id: project.id, user_id: user_test.id)
+  Membership.create!(role: 1, project_id: project.id, user_id: user_test.id)
   project
 end
 

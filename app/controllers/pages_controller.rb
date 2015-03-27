@@ -12,9 +12,9 @@ class PagesController < ApplicationController
 
   def check_member_of_project
     is_project_member = true
-    if params[:id]
+    if params[:project_id]
       is_project_member = false
-      Project.find(params[:id]).memberships.each do |membership|
+      Project.find(params[:project_id]).memberships.each do |membership|
         if membership.user.id == current_user.id
           is_project_member = true
         end
@@ -56,8 +56,27 @@ class PagesController < ApplicationController
   end
 
   def check_user_role
-    if Project.find(params[:id]).memberships.find_by(user_id: current_user[:id]).role != "owner"
-      redirect_to projects_path, notice: "You do not have access"
+    id = params[:id]
+    if params[:project_id]
+      id = params[:project_id]
+    end
+    if Project.find(id).memberships.find_by(user_id: current_user[:id]).role != "1"
+      redirect_to project_path(id), notice: "You do not have access"
+    end
+  end
+
+  def check_member_deletes_self
+    id = params[:id]
+    if params[:project_id]
+      id = params[:project_id]
+    end
+
+    if params["action"] == "destroy" && current_user.memberships.find_by(project_id: id).role == "2"
+      @project = Project.find(id)
+      @membership = @project.memberships.find(params[:id])
+      if @membership.destroy
+        redirect_to projects_path, notice: "#{@membership.user.full_name} successfully removed."
+      end
     end
   end
 

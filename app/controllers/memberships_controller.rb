@@ -1,5 +1,7 @@
 class MembershipsController < PagesController
 before_action :check_member_of_project_id
+before_action :check_member_deletes_self, only: :destroy
+before_action :check_user_role, only: [:edit, :update, :destroy]
 
   def index
     @project = Project.find(params[:project_id])

@@ -1,7 +1,7 @@
 class ProjectsController < PagesController
   before_action :check_member_of_project
   before_action :user_logged_in
-  before_action :check_user_role, only: [:update, :destroy]
+  before_action :check_user_role, only: [:edit, :update, :destroy]
 
   def user_logged_in
     if !current_user
@@ -20,7 +20,7 @@ class ProjectsController < PagesController
   def create
     @project = Project.new(project_params)
     if @project.save
-      Membership.create!(role: "owner", project_id: @project.id, user_id: current_user.id )
+      Membership.create!(role: 1, project_id: @project.id, user_id: current_user.id )
       redirect_to project_tasks_path(@project[:id]), notice: "Project was successfully created."
     else
       render :new

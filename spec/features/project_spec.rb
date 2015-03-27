@@ -24,7 +24,7 @@ feature "Check projects pages w flash and validations" do
 
     scenario "Users can see specific project details" do
       new_project = Project.create!({name: "Find Slovodan's Weapons"})
-      Membership.create!(role: "owner", project_id: new_project.id, user_id: User.first.id )
+      Membership.create!(role: 1, project_id: new_project.id, user_id: User.first.id )
       visit projects_path
       first(:link, "Find Slovodan's Weapons").click
       expect(page).to have_content ("Find Slovodan's Weapons")
@@ -34,7 +34,7 @@ feature "Check projects pages w flash and validations" do
 
     scenario "Users can edit projects detials" do
       new_project = Project.create!({name: "Find Slovodan's Weapons"})
-      Membership.create!(role: "owner", project_id: new_project.id, user_id: User.first.id )
+      Membership.create!(role: 1, project_id: new_project.id, user_id: User.first.id )
       visit ("/projects/#{new_project[:id]}_path")
       click_on ("Edit")
       expect(page).to have_content ("Edit Project")
@@ -50,7 +50,7 @@ feature "Check projects pages w flash and validations" do
 
     scenario "Users can delete project" do
       new_project = Project.create!({name: "Find Slovodan's Weapons"})
-      Membership.create!(role: "owner", project_id: new_project.id, user_id: User.first.id )
+      Membership.create!(role: 1, project_id: new_project.id, user_id: User.first.id )
       visit ("/projects/#{new_project[:id]}_path")
       click_on ("Delete")
       expect(page).to have_content ("Project was successfully deleted.")
