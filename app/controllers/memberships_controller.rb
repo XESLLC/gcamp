@@ -8,6 +8,7 @@ before_action :check_user_role, only: [:edit, :update, :destroy]
     @membership = @project.memberships.new
     @memberships = @project.memberships.all
     @users = User.all
+    @owner_count = @memberships.count {|member| member.role == 1}
   end
 
 
@@ -26,10 +27,15 @@ before_action :check_user_role, only: [:edit, :update, :destroy]
     @project = Project.find(params[:project_id])
     @memberships = @project.memberships.all
     @membership = @project.memberships.find(params[:id])
-    if @membership.update(membership_params)
-      redirect_to project_memberships_path, notice: "#{@membership.user.full_name} was successfully updated."
+    @owner_count = @memberships.count {|member| member.role == 1}
+    if @owner_count < 2 && @membership.role == "1"
+      redirect_to project_memberships_path, alert: "Projects must have at lease one owner"
     else
-      render :index
+      if @membership.update(membership_params)
+        redirect_to project_memberships_path, notice: "#{@membership.user.full_name} was successfully updated."
+      else
+        render :index
+      end
     end
   end
 

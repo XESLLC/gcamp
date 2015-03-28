@@ -54,7 +54,11 @@
           <% end %>
           <td class = 'col-md-3'><%= f.select(:role, member_array_value, {}, class: 'form-control') %></td>
           <td class = 'col-md-1'><%= f.submit 'Update', class: 'btn btn-primary' %></td>
-          <td class = 'col-md-3'><%= link_to "", project_membership_path(@project, membership), method: :delete, class: "glyphicon glyphicon-remove" %></td>
+          <% if @owner_count > 1 %>
+            <td class = 'col-md-3'><%= link_to "", project_membership_path(@project, membership), method: :delete, class: "glyphicon glyphicon-remove" %></td>
+          <% else %>
+            <td class = 'col-md-3'>You are the last owner</td>
+          <% end %>
           </tr>
         </div>
       <% end %>
