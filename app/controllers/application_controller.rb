@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
     session[:return_to] = session[:next]
     session[:next] = session[:now]
     session[:now] = request.path
-    binding.pry
   end
 
 end
