@@ -8,7 +8,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      if session[:return_to]
+      if session[:return_to] && session[:return_to] != "/" 
         redirect_to session[:return_to], notice: "You have successfully signed in"
       else
        redirect_to projects_path, notice: "You have successfully signed in"
@@ -21,6 +21,7 @@ class AuthenticationController < ApplicationController
   def destroy
     session.clear
     redirect_to root_path, notice: "You have successfully signed out"
-  end
+    session.clear
+    end
 
 end
