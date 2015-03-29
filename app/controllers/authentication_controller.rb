@@ -8,7 +8,11 @@ class AuthenticationController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to projects_path, notice: "You have successfully signed in"
+      if session[:return_to]
+        redirect_to session[:return_to], notice: "You have successfully signed in"
+      else
+       redirect_to projects_path, notice: "You have successfully signed in"
+      end
     else
       redirect_to signin_path, alert: "Email / Password combination is invalid ", notice: "dummy"
     end

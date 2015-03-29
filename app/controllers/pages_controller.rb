@@ -1,9 +1,15 @@
 class PagesController < ApplicationController
 
- before_action :check_if_current_user
+ before_action :user_logged_in
  before_action :pages
 
  private
+
+ def user_logged_in
+   if !current_user
+     redirect_to signin_path, alert: "You must sign in"
+   end
+ end
 
  def pages
    if current_user.admin
@@ -12,12 +18,6 @@ class PagesController < ApplicationController
      @user_projects = current_user.projects
    end
  end
-
- def check_if_current_user
-    if !current_user
-      redirect_to root_path, notice: "You must sign in"
-    end
-  end
 
   def check_if_proper_user
     if !current_user.admin
@@ -77,7 +77,6 @@ class PagesController < ApplicationController
     if params[:project_id]
       id = params[:project_id]
     end
-
     if params["action"] == "destroy" && current_user.memberships.find_by(project_id: id).role == "2"
       @project = Project.find(id)
       @membership = @project.memberships.find(params[:id])
@@ -93,13 +92,6 @@ class PagesController < ApplicationController
       admin = User.find(current_user[:id]).admin
       params.merge(admin: admin)
       end
-    end
-  end
-
-  def user_logged_in
-    if current_user
-    else
-      redirect_to signin_path, alert: "You must sign in"
     end
   end
 

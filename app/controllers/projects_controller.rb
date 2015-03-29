@@ -1,7 +1,6 @@
 class ProjectsController < PagesController
 
   before_action :check_member_of_project
-  before_action :user_logged_in
   before_action :check_user_role, only: [:edit, :update, :destroy]
 
   def index
