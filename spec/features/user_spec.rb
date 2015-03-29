@@ -68,8 +68,6 @@ feature "Check users pages w flash and validations" do
       visit "/users"
       click_on ("Edit")
       click_on ("Delete User")
-      expect(page).to have_content ("You must sign in")
-      expect(page).to have_no_content ("Slovadon Melosovic")
-      expect(current_path).to eq("/")
+      expect(current_path).to eq("/users")
     end
 end
