@@ -19,11 +19,15 @@
             <%= link_to user.first_name + " " + user.last_name, user_path(user[:id]) %>
           </td>
           <td >
+            <% if user.id == current_user.id || current_user.admin %>
             <%= mail_to user.email, user.email %>
+            <% end %>
           </td>
           <td>
             <div class="text-right">
-              <%= link_to "Edit", edit_user_path(user[:id]) %>
+              <% if user.id == current_user.id || current_user.admin %>
+                <%= link_to "Edit", edit_user_path(user[:id]) %>
+              <% end %>
             </div>
           </td>
         </tr>

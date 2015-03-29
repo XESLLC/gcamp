@@ -16,6 +16,4 @@ require 'bcrypt'
 
   end
 
-
-
 end

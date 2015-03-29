@@ -1,15 +1,7 @@
 class TasksController < PagesController
-before_action :check_member_of_task
 
-  def user_logged_in
-    if current_user
-    else
-      redirect_to signin_path, alert: "You must sign in"
-    end
-  end
-
-before_action :user_logged_in
-
+  before_action :check_member_of_task
+  before_action :user_logged_in
 
   def index
     @project = Project.find(params[:project_id])

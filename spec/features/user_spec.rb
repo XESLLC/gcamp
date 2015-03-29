@@ -35,21 +35,17 @@ feature "Check users pages w flash and validations" do
     end
 
     scenario "users can see specific user details" do
-      new_user = User.new({first_name: "Slovodan", last_name: "Melosovic", email: "cool@names.com", password: "password", password_confirmation: "password"})
-      new_user.save
-      visit users_path
-      click_on ("Slovodan Melosovic")
-      expect(page).to have_content ("Slovodan")
-      expect(page).to have_content ("Melosovic")
-      expect(page).to have_content ("cool@names.com")
+      visit "/users"
+      first(:link, "Con Queso").click
+      expect(page).to have_content ("Con")
+      expect(page).to have_content ("Queso")
+      expect(page).to have_content ("cheese@melted.com")
       expect(page).to have_content ("User")
-      expect(current_path).to eq("/users/#{new_user[:id]}")
+      expect(current_path).to eq("/users/#{User.first[:id]}")
     end
 
-    scenario "users can edit users detials except password" do
-      new_user = User.new({first_name: "Slovodan", last_name: "Melosovic", email: "cool@names.com", password: "password", password_confirmation: "password"})
-      new_user.save
-      visit "/users/#{new_user[:id]}"
+    scenario "users can edit only thier detials except password" do
+      visit "/users"
       click_on ("Edit")
       expect(page).to have_content ("Edit User")
       fill_in "user_first_name", with: nil
@@ -69,13 +65,11 @@ feature "Check users pages w flash and validations" do
     end
 
     scenario "users can delete user" do
-      new_user = User.new({first_name: "Slovodan", last_name: "Melosovic", email: "cool@names.com", password: "password"})
-      new_user.save
-      visit "/users/#{new_user[:id]}"
+      visit "/users"
       click_on ("Edit")
       click_on ("Delete User")
-      expect(page).to have_content ("User was successfully deleted.")
+      expect(page).to have_content ("You must sign in")
       expect(page).to have_no_content ("Slovadon Melosovic")
-      expect(current_path).to eq("/users")
+      expect(current_path).to eq("/")
     end
 end

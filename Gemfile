@@ -52,4 +52,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara-rails', '~> 0.0.2'
 
+#  gem 'capybara-webkit', '~> 1.5.0'
+
+
+
 end

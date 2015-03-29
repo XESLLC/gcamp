@@ -1,16 +1,15 @@
 class ProjectsController < PagesController
+
   before_action :check_member_of_project
   before_action :user_logged_in
   before_action :check_user_role, only: [:edit, :update, :destroy]
 
-  def user_logged_in
-    if !current_user
-    redirect_to signin_path, alert: "You must sign in"
-    end
-  end
-
   def index
-    @projects = User.find(current_user.id).projects
+    if current_user.admin
+      @projects = Project.all
+    else
+      @projects = User.find(current_user.id).projects
+    end
   end
 
   def new
@@ -43,6 +42,11 @@ class ProjectsController < PagesController
   def show
     @project = Project.find(params[:id])
     @task_count = @project.tasks.all.count
+    if current_user.admin
+      @role = "1"
+    else
+      @role = @project.memberships.find_by(user_id: current_user[:id]).role
+    end
   end
 
   def destroy

@@ -3,11 +3,7 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.text  :name
 
-
-
       t.timestamps
-
-
     end
   end
 end

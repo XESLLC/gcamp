@@ -1,16 +1,22 @@
 class MembershipsController < PagesController
-before_action :check_member_of_project_id
-before_action :check_member_deletes_self, only: :destroy
-before_action :check_user_role, only: [:edit, :update, :destroy]
+
+  before_action :check_member_of_project
+  before_action :check_member_deletes_self, only: :destroy
+  before_action :check_user_role, only: [:edit, :update, :destroy]
 
   def index
     @project = Project.find(params[:project_id])
     @membership = @project.memberships.new
     @memberships = @project.memberships.all
     @users = User.all
-    @owner_count = @memberships.count {|member| member.role == 1}
+    if current_user.admin
+      @role = "1"
+      @owner_count = 10
+    else
+      @owner_count = @memberships.count {|member| member.role == 1}
+      @role = @project.memberships.find_by(user_id: current_user[:id]).role
+    end
   end
-
 
   def create
     @project = Project.find(params[:project_id])

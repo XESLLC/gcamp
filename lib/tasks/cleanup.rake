@@ -5,7 +5,7 @@ namespace :cleanup do
     project_ids = Project.all.pluck(:id)
     membership_project_ids = Membership.all.pluck(:project_id)
 
-    @count1 = (0) 
+    @count1 = (0)
 
     membership_project_ids.each do |project_id|
       if !project_ids.include? project_id || !project_id
@@ -103,6 +103,6 @@ namespace :cleanup do
     puts @count3.to_s + " Comment(s) (no users) user ids set to nil!"
     puts (@count1+@count2+@count3+@count4).to_s + " Total Record(s) updated or destroyed!"
 
-
+  
   end
 end

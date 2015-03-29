@@ -14,7 +14,7 @@
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <% current_user.projects.each do |project|%>
+                <% @user_projects.each do |project|%>
                   <li><%= link_to project.name, project_path(project.id) %></li>
                   <li class="divider"></li>
                 <% end %>
