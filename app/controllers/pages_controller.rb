@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   def check_if_proper_user
     if !current_user.admin
       if params[:id] != current_user.id.to_s
-      render file: 'public/404.html', status: :not_found, layout: false
+      render file: 'public/404.html', alert: :not_found, layout: false
       end
     end
   end
@@ -38,7 +38,7 @@ class PagesController < ApplicationController
       end
     end
     if is_project_member == false
-      redirect_to projects_path, notice: "You do not have access to that project"
+      redirect_to projects_path, alert: "You do not have access to that project"
     end
   end
 
@@ -53,7 +53,7 @@ class PagesController < ApplicationController
       end
     end
     if is_task_member == false
-      redirect_to projects_path, notice: "You do not have access to that project"
+      redirect_to projects_path, alert: "You do not have access to that project"
     end
   end
 
@@ -68,7 +68,7 @@ class PagesController < ApplicationController
       role = Project.find(id).memberships.find_by(user_id: current_user[:id]).role
     end
     if role != "1"
-      redirect_to project_path(id), notice: "You do not have access"
+      redirect_to project_path(id), alert: "You do not have access"
     end
   end
 
