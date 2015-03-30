@@ -2,9 +2,11 @@ class UsersController < PagesController
 
   before_action :user_logged_in
   before_action :check_if_proper_user, only: [:edit, :update, :destroy]
+  before_action :check_other_members, only: :index
 
   def index
     @users = User.all
+    @members_associated
   end
 
   def new
@@ -50,6 +52,15 @@ class UsersController < PagesController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
+  end
+
+  def check_other_members
+    @members_associated = []
+    current_user.projects.each do |project|
+      project.users.each do |user|
+          @members_associated << user.id
+      end
+    end
   end
 
 end

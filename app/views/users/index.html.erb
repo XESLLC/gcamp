@@ -19,7 +19,7 @@
             <%= link_to user.first_name + " " + user.last_name, user_path(user[:id]) %>
           </td>
           <td >
-            <% if user.id == current_user.id || current_user.admin %>
+            <% if user.id == current_user.id || current_user.admin || @members_associated.include?(user.id) %>
             <%= mail_to user.email, user.email %>
             <% end %>
           </td>
