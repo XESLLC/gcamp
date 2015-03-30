@@ -87,12 +87,26 @@ class PagesController < ApplicationController
   end
 
   def ensure_admin_to_make_admin
-    if params[:user].methods.include?(:admin)
-      if params[:user].admin == true
-      admin = User.find(current_user[:id]).admin
-      params.merge(admin: admin)
-      end
+    if User.find(current_user[:id]).admin == false
+      params[:user][:admin] = "0" 
     end
+
   end
+
+  #{"utf8"=>"✓",
+  # "_method"=>"patch",
+  # "authenticity_token"=>
+  #  "4Kx5E/T09yw5AHSb4MyahcLVBJtiLXBoDDoRAjEF0fvi4JsE4c4FXPKdF75Da+H3eHbweekb0sUGc3oLm/9bzg==",
+  # "user"=>
+  #  {"first_name"=>"David ",
+  #   "last_name"=>"Abramowitz",
+  #   "email"=>"da@da.com",
+  #   "password"=>"",
+  #   "password_confirmation"=>"",
+  #   "admin"=>"1"},
+  # "commit"=>"Update User",
+  # "controller"=>"users",
+  # "action"=>"update",
+  # "id"=>"65"}
 
 end

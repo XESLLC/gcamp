@@ -28,6 +28,10 @@ def sign_up2
   end
 end
 
+def create_admin
+  User.create!(first_name: "Admin", last_name: "Admin", email: "admin@email.com", password: "password", admin: true)
+end
+
 def create_new_project
   unless User.first
     User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
@@ -51,6 +55,11 @@ def create_user
   User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
 end
 
+def create_task
+  task = Task.create!(description: "Test Description", checkbox: false, due_date: Time.now.utc + 3600, project_id: "#{@project.id}")
+  Comment.create!(user_id: User.last, task_id: task.id, comment: "Test Comment")
+  task
+end
 
 RSpec.configure do |config|
 

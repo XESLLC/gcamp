@@ -2,14 +2,24 @@ describe ProjectsController do
   before do
     @user = create_user
     @project = create_new_project
+    @user_admin = create_admin
     session[:user_id] = @user.id
   end
 
   describe "index" do
     it "shows all projects for current user only" do
       get :index
+      expect(assigns(:projects)).to eq(@user.projects)
       expect(response).to render_template("index")
-      expect(assigns(:projects)).to eq([@project])
+    end
+  end
+
+  describe "index" do
+    it "shows all projects for admin" do
+      current_user = @user_admin
+      get :index
+      expect(assigns(:projects)).to eq(Project.all)
+      expect(response).to render_template("index")
     end
   end
 
@@ -53,7 +63,7 @@ describe ProjectsController do
     end
   end
 
-  describe "udate" do
+  describe "update" do
     it "does not update new project and renders new" do
       patch :create, {"project"=>{"name"=>nil}}
       expect(response.status).to eq(200)
