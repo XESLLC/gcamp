@@ -1,9 +1,10 @@
 feature "Check tasks pages w flash and validations" do
   before do
-    sign_up
-    @project_test = create_new_project
-    @task_test = create_new_project_task
-    visit project_tasks_path(@project_test)
+    seed_test_with_user_project_membership
+    sign_in_user1
+    @task = create_task
+    visit project_tasks_path(@project)
+
   end
 
   scenario "User can see index page" do
@@ -32,11 +33,11 @@ feature "Check tasks pages w flash and validations" do
     click_on ("Kill Slovodan Melosovic")
     expect(page).to have_content ("Kill Slovodan Melosovic")
     expect(page).to have_content ("Due on")
-    expect(current_path).to eq("/projects/#{@project_test.id}/tasks/#{@task_test.id}")
+    expect(current_path).to eq("/projects/#{@project.id}/tasks/#{@task.id}")
   end
 
   scenario "User can edit tasks detials" do
-    visit ("/projects/#{@project_test.id}/tasks/#{@task_test.id}")
+    visit ("/projects/#{@project.id}/tasks/#{@task.id}")
     click_on ("Edit")
     expect(page).to have_content ("Edit Task")
     fill_in "Description", with: nil
@@ -48,16 +49,16 @@ feature "Check tasks pages w flash and validations" do
     fill_in "Due date", with: "01012015"
     click_on ("Update Task")
     expect(page).to have_content ("Task was successfully updated.")
-    expect(current_path).to eq("/projects/#{@project_test.id}/tasks/#{@task_test.id}")
+    expect(current_path).to eq("/projects/#{@project.id}/tasks/#{@task.id}")
   end
 
   scenario "User can delete task" do
 
-    visit ("/projects/#{@project_test.id}/tasks")
+    visit ("/projects/#{@project.id}/tasks")
     find('.glyphicon-remove').click
 
     expect(page).to have_content ("Task was successfully deleted.")
     expect(page).to have_no_content ("Kill Slovodan Melosovic")
-    expect(current_path).to eq("/projects/#{@project_test.id}/tasks")
+    expect(current_path).to eq("/projects/#{@project.id}/tasks")
   end
 end

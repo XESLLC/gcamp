@@ -1,16 +1,15 @@
 describe TasksController do
   before do
-    @user = create_user
-    @project = create_new_project
+    seed_test_with_user_project_membership
     @user_admin = create_admin
-    session[:user_id] = @user.id
+    session[:user_id] = @user1.id
     @task = create_task
   end
 
   describe "index" do
     it "shows all tasks for current project only" do
       get :index, {"project_id"=> "#{@project.id}", "task"=> "@task.id"}
-      expect([assigns(:project)]).to eq(@user.projects)
+      expect([assigns(:project)]).to eq(@user1.projects)
       expect(assigns(:tasks)).to eq(@project.tasks)
       expect(response).to render_template("index")
     end

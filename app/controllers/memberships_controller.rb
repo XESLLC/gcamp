@@ -33,7 +33,7 @@ class MembershipsController < PagesController
     @project = Project.find(params[:project_id])
     @memberships = @project.memberships.all
     @membership = @project.memberships.find(params[:id])
-    @owner_count = @memberships.count {|member| member.role == 1}
+    @owner_count = @memberships.to_a.count {|member| member.role == "1"}.to_i
     if @owner_count < 2 && @membership.role == "1"
       redirect_to project_memberships_path, alert: "Projects must have at lease one owner"
     else

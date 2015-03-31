@@ -1,9 +1,8 @@
 describe CommentsController do
   before do
-    @user = create_user
-    @project = create_new_project
+    seed_test_with_user_project_membership
     @user_admin = create_admin
-    session[:user_id] = @user.id
+    session[:user_id] = @user1.id
     @task = create_task
   end
 

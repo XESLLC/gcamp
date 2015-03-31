@@ -1,15 +1,14 @@
 describe ProjectsController do
   before do
-    @user = create_user
-    @project = create_new_project
+    seed_test_with_user_project_membership
     @user_admin = create_admin
-    session[:user_id] = @user.id
+    session[:user_id] = @user1.id
   end
 
   describe "index" do
     it "shows all projects for current user only" do
       get :index
-      expect(assigns(:projects)).to eq(@user.projects)
+      expect(assigns(:projects)).to eq([@project])
       expect(response).to render_template("index")
     end
   end
@@ -72,7 +71,7 @@ describe ProjectsController do
 
   describe "show" do
     it "opens a page to show just a single project details" do
-      create_new_project_task
+      create_task
       get :show, {"id"=>@project.id}
       expect(assigns(:project)).to eq(@project)
       expect(Project.last.tasks.count).to eq(assigns(:task_count))

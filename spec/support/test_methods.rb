@@ -13,6 +13,26 @@ def sign_up
   end
 end
 
+def sign_in_user1
+  visit signin_path
+  fill_in "Email", with: "email@email.com"
+  fill_in "Password", with: "password"
+  within(".form-horizontal") do
+    click_on("Sign In")
+  end
+end
+
+def sign_in_admin
+  click_on("Sign Out")
+  click_on("Sign In")
+  User.create!(first_name: "admin", last_name: "admin", email: "admin@example.com", password: "password", admin: true)
+  fill_in "Email", with: "admin@example.com"
+  fill_in "Password", with: "password"
+  within(".form-horizontal") do
+    click_on("Sign In")
+  end
+end
+
 def sign_up2
   visit signup_path
   within(".form-horizontal") do
@@ -32,32 +52,30 @@ def create_admin
   User.create!(first_name: "Admin", last_name: "Admin", email: "admin@email.com", password: "password", admin: true)
 end
 
-def create_new_project
+def seed_test_with_user_project_membership
   unless User.first
-    User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
+  @user1 =  User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
+  @user2 =  User.create!(first_name: "Billy", last_name: "Bob", email: "billy@email.com", password: "password")
+  @user3 =  User.create!(first_name: "Sue", last_name: "Smith", email: "sue@email.com", password: "password")
   end
-  project = Project.create!({name: "Find Slovodan's Weapons"})
-  user_test = User.first
-  Membership.create!(role: 1, project_id: project.id, user_id: user_test.id)
+  @project = Project.create!({name: "Find Slovodan's Weapons"})
+  Membership.create!(role: 1, project_id: @project.id, user_id: @user1.id)
+  Membership.create!(role: 1, project_id: @project.id, user_id: @user2.id)
+  Membership.create!(role: 2, project_id: @project.id, user_id: @user3.id)
+  @project
+end
+
+
+def create_new_project2
+  user =User.create!(first_name: "Boris", last_name: "Yeltsin", email: "Yelstsin@email.com", password: "password")
+  project = Project.create!({name: "Find Russia's Weapons"})
+  Membership.create!(role: 1, project_id: project.id, user_id: user.id)
   project
 end
 
-def create_new_project_task
-  Task.create!({
-    description: "Kill Slovodan Melosovic",
-    checkbox: false,
-    due_date: Time.zone.tomorrow,
-    project_id: Project.find_by(name: "Find Slovodan's Weapons").id
-  })
-end
-
-def create_user
-  User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
-end
-
 def create_task
-  task = Task.create!(description: "Test Description", checkbox: false, due_date: Time.now.utc + 3600, project_id: "#{@project.id}")
-  Comment.create!(user_id: User.last, task_id: task.id, comment: "Test Comment")
+  task = Task.create!(description: "Kill Slovodan Melosovic", checkbox: false, due_date: Time.now.utc + 3600, project_id: "#{@project.id}")
+  Comment.create!(user_id: @user1.id, task_id: task.id, comment: "Test Comment")
   task
 end
 

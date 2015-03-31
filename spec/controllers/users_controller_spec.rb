@@ -1,15 +1,14 @@
 describe UsersController do
   before do
-    @user = create_user
-    @project = create_new_project
-    session[:user_id] = @user.id
+    seed_test_with_user_project_membership
+    session[:user_id] = @user1.id
   end
 
   describe "index" do
     it "shows all users for current user only" do
       get :index
       expect(response).to render_template("index")
-      expect(assigns(:users)).to eq([@user])
+      expect(assigns(:users)).to eq([@user1, @user2, @user3])
     end
   end
 
@@ -38,16 +37,16 @@ describe UsersController do
 
   describe "edit" do
     it "opens a edit page for clicked on user - current user access" do
-      get :edit, {"id"=>@user.id}
-      expect(assigns(:user).id).to be(@user.id)
+      get :edit, {"id"=>@user1.id}
+      expect(assigns(:user).id).to be(@user1.id)
     end
   end
 
   describe "update" do
     it "updates a user as requested from current user if not render edit" do
-      put :update, {"user"=> {"first_name"=>"David", "last_name"=>"Abramowitz", "email"=>"dea@dea2.com", "password"=>"password", "password_confirmation"=>"password"}, "id"=>@user.id }
+      put :update, {"user"=> {"first_name"=>"David", "last_name"=>"Abramowitz", "email"=>"dea@dea2.com", "password"=>"password", "password_confirmation"=>"password"}, "id"=>@user1.id }
       expect(assigns(:user).last_name).to eq("Abramowitz")
-      expect(User.find(@user.id).last_name).to eq("Abramowitz")
+      expect(User.find(@user1.id).last_name).to eq("Abramowitz")
       expect(response.status).to eq(302)
     end
   end
@@ -61,17 +60,17 @@ describe UsersController do
 
   describe "show" do
     it "opens a page to show just a single project details" do
-      get :show, {"id"=>@user.id}
-      expect(assigns(:user)).to eq(@user)
+      get :show, {"id"=>@user1.id}
+      expect(assigns(:user)).to eq(@user1)
       expect(response.status).to eq(200)
     end
   end
 
   describe "destroy" do
     it "deletes a single user and all associated data, if not renders show" do
-      delete :destroy, {"id"=>@user.id}
-      expect(assigns(:user)).to eq(@user)
-      expect { User.find(@user.id) }.to raise_error
+      delete :destroy, {"id"=>@user1.id}
+      expect(assigns(:user)).to eq(@user1)
+      expect { User.find(@user1.id) }.to raise_error
       expect(response.status).to eq(302)
     end
   end
