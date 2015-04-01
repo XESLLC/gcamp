@@ -54,7 +54,7 @@ end
 
 def seed_test_with_user_project_membership
   unless User.first
-  @user1 =  User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password")
+  @user1 =  User.create!(first_name: "Slovodan", last_name: "Melosovic", email: "email@email.com", password: "password", token: "986eb53247fa846e8eef7cbcb8c93203")
   @user2 =  User.create!(first_name: "Billy", last_name: "Bob", email: "billy@email.com", password: "password")
   @user3 =  User.create!(first_name: "Sue", last_name: "Smith", email: "sue@email.com", password: "password")
   end

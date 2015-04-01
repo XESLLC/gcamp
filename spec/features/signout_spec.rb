@@ -1,5 +1,4 @@
 
-
 feature "Check signout w flash and validations" do
   scenario "Users signout and see root" do
     sign_up

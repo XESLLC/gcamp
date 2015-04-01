@@ -14,6 +14,4 @@ class CommonQuestion
       @answer
   end
 
-
-  #PORO! here
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329031315) do
+ActiveRecord::Schema.define(version: 20150331202121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150329031315) do
     t.text    "email"
     t.string  "password_digest"
     t.boolean "admin"
+    t.string  "token"
   end
 
   add_foreign_key "comments", "users"

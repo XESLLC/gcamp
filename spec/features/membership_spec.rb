@@ -1,3 +1,4 @@
+
 feature "Check membership pages w flash and validations" do
   before do
     seed_test_with_user_project_membership

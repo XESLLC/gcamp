@@ -21,13 +21,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  # 1. /users/12/memberships
-  # # Index of memberships for a given user_id (12)
-  #
-  # 2. /projects/1/memberships
-  # # Index of memberships for a given project_id (1)
-  #
-  # /projects/1/CRUD_STUFF_HERE
+  resources :tracker_projects, only: :show  
 
   resources :projects do
     resources :tasks do

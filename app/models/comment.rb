@@ -4,4 +4,5 @@ class Comment < ActiveRecord::Base
 
   validates :comment, presence: :true
   validates :task_id, presence: :true
+  
 end

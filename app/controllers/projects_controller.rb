@@ -9,6 +9,12 @@ class ProjectsController < PagesController
     else
       @projects = User.find(current_user.id).projects
     end
+    tracker_api = TrackerAPI.new
+    if current_user.token
+      @tracker_projects = tracker_api.projects(current_user.token)
+    else
+      @tracker_projects = {}
+    end
   end
 
   def new

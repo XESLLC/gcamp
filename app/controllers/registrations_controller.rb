@@ -1,9 +1,7 @@
 class RegistrationsController < ApplicationController
 
   def new
-
     @user = User.new
-
   end
 
   def create
@@ -14,7 +12,6 @@ class RegistrationsController < ApplicationController
     else
       render :new
     end
-
   end
 
   private

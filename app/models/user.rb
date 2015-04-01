@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-require 'bcrypt'
+
+  require 'bcrypt'
 
   has_many :memberships, dependent: :destroy
   has_many :comments, dependent: :nullify
@@ -11,9 +12,7 @@ require 'bcrypt'
   has_secure_password
 
   def full_name
-
     "#{first_name} #{last_name}"
-
   end
 
 end

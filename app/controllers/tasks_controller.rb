@@ -38,10 +38,10 @@ class TasksController < PagesController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-    redirect_to project_task_path(params[:project_id], @task[:id]), notice: 'Task was successfully updated.'
+      redirect_to project_task_path(params[:project_id], @task[:id]), notice: 'Task was successfully updated.'
     else
       @project = Project.find(params[:project_id])
-     render :edit
+      render :edit
     end
   end
 
@@ -57,9 +57,9 @@ class TasksController < PagesController
   end
 
   private
-     def task_params
-       params.require(:task).permit(:description, :checkbox, :due_date, :project_id)
-     end
 
+  def task_params
+    params.require(:task).permit(:description, :checkbox, :due_date, :project_id)
+  end
 
 end

@@ -1,5 +1,4 @@
 
-
 feature "Check signup page w flash and validations" do
     scenario "Users can see signup page" do
       visit signup_path

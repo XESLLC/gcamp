@@ -1,6 +1,6 @@
 gem 'bootstrap-sass', '~> 3.3.3'
 
-
+gem 'faraday', '~> 0.9.0'
 
 source 'https://rubygems.org'
 gem 'rails_12factor', '~> 0.0.3', group: :production
