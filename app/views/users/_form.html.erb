@@ -34,8 +34,12 @@
       <% end %>
       <dl class="dl-horizontal">
         <dt><%= t.label :token %></dt>
-        <% if @user.token %>
-        <dd><%= "#{@user.token.to_s.slice!(0..3)}*************************" %></dd>
+        <% if @user.token != nil %>
+          <% if @user.token.length > 4 %>
+        <dd><%= @user.token[0..3] + ('*')*(@user.token.length - 4) %></dd>
+          <% else %>
+          <dd>Not Provided</dd>
+          <% end %>
         <% else %>
         <dd>Not Provided</dd>
         <% end %>

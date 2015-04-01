@@ -11,7 +11,12 @@ class ProjectsController < PagesController
     end
     tracker_api = TrackerAPI.new
     if current_user.token
+      if tracker_api.projects(current_user.token).class == Array
       @tracker_projects = tracker_api.projects(current_user.token)
+      else
+        flash[:alert] = "You may have an improper token! Fix this in user edit page"
+        @tracker_projects = {}
+      end
     else
       @tracker_projects = {}
     end
